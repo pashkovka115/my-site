@@ -1,0 +1,86 @@
+.header-action-area .header-action .language-menu {
+    margin-left: 25px;
+    position: relative;
+    height: 80px;
+    line-height: 80px;
+}
+@media only screen and (max-width: 479.98px) {
+    .header-action-area .header-action .language-menu {
+        display: none;
+    }
+}
+.header-action-area .header-action .language-menu .title {
+    color: #222;
+    font-size: 16px;
+    min-width: 54px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.4s ease-out;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+}
+@media only screen and (max-width: 575px) {
+    .header-action-area .header-action .language-menu .title {
+        font-size: 18px;
+        min-width: 38px;
+    }
+}
+.header-action-area .header-action .language-menu .title:after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    vertical-align: 4px;
+    content: "";
+    border-top: 4px solid;
+    border-right: 5px solid transparent;
+    border-bottom: 0;
+    border-left: 5px solid transparent;
+}
+.header-action-area .header-action .language-menu .language-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #222;
+    width: 250px;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    z-index: 99;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+}
+.header-action-area .header-action .language-menu .language-dropdown .language {
+    padding: 22px 20px;
+}
+.header-action-area .header-action .language-menu .language-dropdown .language ul li {
+    color: #d8d8d8;
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    letter-spacing: 0.25px;
+    margin-bottom: 5px;
+}
+.header-action-area .header-action .language-menu .language-dropdown .language ul li a {
+    color: #d8d8d8;
+}
+.header-action-area .header-action .language-menu .language-dropdown .language ul li a:hover {
+    color: #d0a97e;
+    padding-left: 5px;
+}
+.header-action-area .header-action .language-menu .language-dropdown .language ul li:last-child {
+    margin-bottom: 0;
+}
+.header-action-area .header-action .language-menu .language-dropdown.show {
+    height: 140px;
+    visibility: visible;
+}
+.header-action-area .header-action .language-menu:hover .title {
+    color: #ff383f;
+}

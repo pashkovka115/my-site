@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #elem{
+        width: 100px;
+        height: 100px;
+        border: solid 1px red;
+    }
+    #parent{
+        width: 200px;
+        height: 200px;
+        margin-top: 100px;
+        border: solid 1px black;
+    }
+  </style>
+</head>
+<body>
+<!--
+
+--- На перетаскиваемый элемент
+dragstart
+drag
+dragend
+
+--- На принимающий элемент
+dragenter
+dragleave
+dragover
+drop
+
+-->
+
+<div id="elem" draggable="true">
+  abcde
+</div>
+
+<div id="parent"></div>
+
+
+
+<script>
+let elem = document.querySelector('#elem');
+let parent = document.querySelector('#parent');
+
+elem.addEventListener('dragstart', function (){
+    this.style.borderColor = 'green';
+});
+
+parent.addEventListener('dragover', function (event){
+    event.preventDefault();
+});
+parent.addEventListener('drop', function (event){
+    this.style.borderColor = 'green';
+});
+
+</script>
+
+
+</body>
+</html>

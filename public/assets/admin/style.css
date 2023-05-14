@@ -1,0 +1,71 @@
+.line {
+    display: flex;
+    align-items: baseline;
+}
+
+.line *:not(:nth-child(1)) {
+    margin-left: 5px;
+}
+
+ul.errors {
+    list-style-type: none !important;
+}
+
+.card-title {
+    margin-bottom: 0.5rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.btn-group.save-group {
+    /*margin-top: 10px;*/
+    position: fixed;
+    bottom: min(25px);
+}
+
+.category-product-property > label {
+    width: 100%;
+}
+
+span.red {
+    color: red !important;
+}
+
+.checkbox-line {
+    display: flex;
+    justify-content: space-around;
+}
+
+.table thead th {
+    font-weight: 900;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.5rem;
+}
+
+.td-with-inputs input {
+    max-width: 200px;
+    display: inline-block !important;
+    margin-bottom: 5px;
+}
+
+.my-row > * {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.my-table {
+    margin-bottom: 0;
+}
+
+.my-table thead th {
+    padding: 0.5rem;
+}
+
+.my-card-body {
+    padding: 0.5rem;
+}
+

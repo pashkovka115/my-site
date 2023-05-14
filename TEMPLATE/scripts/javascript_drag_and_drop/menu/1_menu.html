@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+      .wrapper {
+          border: solid 1px blue;
+          padding: 20px;
+          list-style: none;
+      }
+
+      .item {
+          width: 600px;
+          z-index: 100000;
+      }
+
+      .parent {
+          border: dotted 1px green;
+      }
+
+      .children {
+          border: dotted 1px red;
+          margin-left: 50px;
+          min-height: 15px;
+          max-width: 200px;
+          z-index: 100000;
+      }
+  </style>
+</head>
+<body>
+
+
+<ul id="wrapper">
+  <li draggable="true" class="item" data-id="1" data-parent-id="0">
+    <div class="parent">Item 1</div>
+    <div class="children"></div>
+  </li>
+  <li draggable="true" class="item" data-id="2" data-parent-id="0">
+    <div class="parent">Item 2</div>
+    <div class="children"></div>
+  </li>
+  <li draggable="true" class="item" data-id="3" data-parent-id="0">
+    <div class="parent">Item 3</div>
+    <div class="children"></div>
+  </li>
+  <li draggable="true" class="item" data-id="4" data-parent-id="0">
+    <div class="parent">Item 4</div>
+    <div class="children"></div>
+  </li>
+  <li draggable="true" class="item" data-id="5" data-parent-id="0">
+    <div class="parent">Item 5</div>
+    <div class="children"></div>
+  </li>
+</ul>
+
+
+<script>
+    let wrapper = document.querySelector('#wrapper');
+    let elems = document.querySelectorAll('#wrapper li');
+    let children = document.querySelectorAll('#wrapper .children');
+
+    wrapper.addEventListener('dragover', function (event){
+        event.preventDefault();
+    });
+    wrapper.addEventListener('drop', function (event){
+        console.log(this, event.target)
+        this.appendChild(event.target)
+    });
+
+    elems.forEach(function (elem, index) {
+        elem.addEventListener('dragstart', function (event) {
+            event.dataTransfer.setData('id', event.target.dataset.id);
+            event.dataTransfer.dropEffect = "move";
+        });
+    });
+
+    children.forEach(function (child, index) {
+        child.addEventListener('dragover', function (event) {
+            event.preventDefault();
+        });
+        child.addEventListener('drop', function (event) {
+            let elem = document.querySelector('[data-id="' + event.dataTransfer.getData('id') + '"]')
+            elem.style.zIndex = elem.style.zIndex + 1;
+            this.appendChild(elem);
+
+            console.log(event.dataTransfer.getData('id'), elem, this);
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+var array = [];
+$(document).ready(function() {
+  var liElements = $("#frontMenu").children();
+  for (var i = 0; i < liElements.length; i++) {
+    var object = {
+      selfId: liElements.eq(i).attr('id'),
+      parentId: null
+    };
+    array.push(object);
+    recursiveGoToChild(liElements.eq(i));
+  }
+  console.log(array);
+});
+
+function recursiveGoToChild(liElement) {
+  var olElement = liElement.children().eq(1);
+  if (olElement.find("li").length != 0) {
+    let liElements = olElement.children();
+    //^---вот здесь небыло let
+
+    for (var i = 0; i < liElements.length; i++) {
+      var object = {
+        selfId: liElements.eq(i).attr('id'),
+        parentId: liElement.attr('id')
+      };
+      array.push(object);
+      recursiveGoToChild(liElements.eq(i));
+    }
+  }
+}

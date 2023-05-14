@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .elem{
+        width: 100px;
+        height: 100px;
+        border: solid 1px red;
+        margin-left: 10px;
+    }
+    .panel{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 500px;
+        height: 150px;
+        border: solid 1px #848408;
+        display: flex;
+        align-items: center;
+    }
+    #parent{
+        width: 600px;
+        height: 300px;
+        margin-top: 100px;
+        border: solid 1px black;
+
+        position: absolute;
+        top: 150px;
+        left: 50px;
+        display: flex;
+        align-items: center;
+    }
+  </style>
+</head>
+<body>
+<!--
+
+--- На перетаскиваемый элемент
+dragstart
+drag
+dragend
+
+--- На принимающий элемент
+dragenter
+dragleave
+dragover
+drop
+
+-->
+
+<div class="panel">
+  <div class="elem" draggable="true">
+    111
+  </div>
+  <div class="elem" draggable="true">
+    222
+  </div>
+  <div class="elem" draggable="true">
+    333
+  </div>
+  <div class="elem" draggable="true">
+    444
+  </div>
+</div>
+
+<div id="parent"></div>
+
+
+
+<script>
+let elems = document.querySelectorAll('.elem');
+let parent = document.querySelector('#parent');
+let moving_element;
+
+let startX;
+let startY;
+
+elems.forEach(function (elem){
+    elem.addEventListener('dragstart', function (event){
+        moving_element = this;
+    });
+});
+
+parent.addEventListener('dragover', function (event){
+    event.preventDefault();
+});
+
+parent.addEventListener('drop', function (event){
+  this.appendChild(moving_element);
+});
+
+
+
+</script>
+
+
+</body>
+</html>
