@@ -30,10 +30,6 @@ return new class extends Migration
                 'name' => 'SEO',
                 'sort' =>60,
             ],
-            [
-                'name' => 'Мультиязычность',
-                'sort' =>10,
-            ],
         ];
 
         DB::table('products_tabs')->insert($tabs);
@@ -450,17 +446,6 @@ return new class extends Migration
             'type' => 'number',
             'tab_id' => 1,
             'description' => '',
-        ];
-        $fields[] = [
-            'origin_name' => 'langs',
-            'show_name' => 'Переводы содержания',
-            'sort_list' => 10,
-            'sort_single' => 10,
-            'is_show_anons' => 0,
-            'is_show_single' => 1,
-            'type' => 'langs',
-            'tab_id' => 6,
-            'description' => 'Служебное поле. На это место подставляются мультиязычные поля.',
         ];
 
         DB::table('products_columns')->insert($fields);

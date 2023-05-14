@@ -24,8 +24,8 @@
 								@foreach($columns as $column)
 									@if($column['is_show_anons'])
 										<td>
-                                            @if(isset($item->baseLang->{$column['origin_name']}))
-											    {{ $item->baseLang->{$column['origin_name']} }}
+                                            @if(isset($item->{$column['origin_name']}))
+											    {{ $item->{$column['origin_name']} }}
                                             @else
 											    {{ $item->{$column['origin_name']} }}
 											@endif

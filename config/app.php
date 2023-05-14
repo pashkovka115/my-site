@@ -198,7 +198,7 @@ return [
         /*
          * My
          */
-        App\Servises\Localization\LocalizationServiceProvider::class
+        App\Servises\_Localization\LocalizationServiceProvider::class
     ],
 
     /*

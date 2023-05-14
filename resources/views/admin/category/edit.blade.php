@@ -1,9 +1,9 @@
 {{--@extends('admin.layouts.default')--}}
 
-{{--@section('title')--}}
+@section('title')
 	Редактируем категорию
 @endsection
-{{--@section('page_header')--}}
+@section('page_header')
 	Редактируем категорию
 @endsection
 

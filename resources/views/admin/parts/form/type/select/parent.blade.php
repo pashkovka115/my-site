@@ -6,7 +6,7 @@
       @isset($item)
         @selected($obj->id == $item->parent_id)
           @endisset
-      >{{ $obj->baseLang->name }}</option>
+      >{{ $obj->name }}</option>
     @endforeach
   @endif
 </select>

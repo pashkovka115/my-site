@@ -20,29 +20,8 @@ class AdminController extends Controller
     public function __construct()
     {
         View::share('global_columns', ProductColumns::column_meta_sort_single());
-        View::share('global_langs', Language::all());
     }
 
-
-    public function updateLangs(Request $request, $item_id, $save_model, $item_foreign_key, $language_foreign_key = 'language_id')
-    {
-        if ($request->has('langs')){
-            $langs = $request->input('langs');
-            if (is_array($langs)){
-                foreach ($langs as $language_id => $lang){
-                    $res = $save_model::where($item_foreign_key, $item_id)->where($language_foreign_key, $language_id)->first();
-                    if ($res){
-                        $res->update($lang);
-                    }else{
-                        $lang[$item_foreign_key] = $item_id;
-                        $lang[$language_foreign_key] = $language_id;
-
-                        $save_model::create($lang);
-                    }
-                }
-            }
-        }
-    }
     /**
      * @param string $model
      * @return array|int[]|string[]

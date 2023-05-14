@@ -2,22 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix(\App\Servises\Localization\LocalizationService::locale())->middleware('setLocale')->group(function () {
-    Route::get('register', [\App\Http\Controllers\Auth\RegisterAdminController::class, 'register'])->middleware('guest')->name('register');
-    Route::post('store', [\App\Http\Controllers\Auth\RegisterAdminController::class, 'store'])->middleware('guest')->name('auth.store');
+Route::get('register', [\App\Http\Controllers\Auth\RegisterAdminController::class, 'register'])->middleware('guest')->name('register');
+Route::post('store', [\App\Http\Controllers\Auth\RegisterAdminController::class, 'store'])->middleware('guest')->name('auth.store');
 
-    Route::get('login', [\App\Http\Controllers\Auth\LoginAdminController::class, 'login'])->middleware('guest')->name('login');
-    Route::post('check', [\App\Http\Controllers\Auth\LoginAdminController::class, 'check'])->middleware('guest')->name('auth.check');
-    Route::get('logout', [\App\Http\Controllers\Auth\LoginAdminController::class, 'destroy'])->middleware('auth')->name('logout');
+Route::get('login', [\App\Http\Controllers\Auth\LoginAdminController::class, 'login'])->middleware('guest')->name('login');
+Route::post('check', [\App\Http\Controllers\Auth\LoginAdminController::class, 'check'])->middleware('guest')->name('auth.check');
+Route::get('logout', [\App\Http\Controllers\Auth\LoginAdminController::class, 'destroy'])->middleware('auth')->name('logout');
 
-    Route::get('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordAdminController::class, 'create'])->middleware('guest')->name('forgot-password');
-    Route::post('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordAdminController::class, 'store'])->middleware('guest')->name('password.email');
+Route::get('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordAdminController::class, 'create'])->middleware('guest')->name('forgot-password');
+Route::post('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordAdminController::class, 'store'])->middleware('guest')->name('password.email');
 
-    Route::get('reset-password', [\App\Http\Controllers\Auth\ResetPasswordAdminController::class, 'create'])->middleware('guest')->name('password.reset');
+Route::get('reset-password', [\App\Http\Controllers\Auth\ResetPasswordAdminController::class, 'create'])->middleware('guest')->name('password.reset');
 
-    Route::get('currensy/{currencyCode}', [\App\Http\Controllers\SiteController::class, 'changeCurrency'])->name('site.currency');
-    Route::get('/', [\App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.home');
-});
+Route::get('currensy/{currencyCode}', [\App\Http\Controllers\SiteController::class, 'changeCurrency'])->name('site.currency');
+Route::get('/', [\App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.home');
 
 
 // Auth: https://www.youtube.com/watch?v=yfxwAH3MbLY&list=PL-FhWbGlJPfZoUC9ApOR3isDIG88I_lj_

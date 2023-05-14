@@ -38,7 +38,7 @@ class ProductAdminController extends AdminController
             $query->where('language_id', $lang->id);
         }])->paginate();*/
 
-        $products = Product::with('baseLang')->paginate();
+        $products = Product::paginate();
 
 //        dump($products);
 
@@ -55,7 +55,7 @@ class ProductAdminController extends AdminController
         return view('admin.product.create', [
             'columns' => ProductColumns::column_meta_sort_single(),
             // Наследуемые объекты
-            'items' => Product::with('baseLang')->whereNull('parent_id')->get(),
+            'items' => Product::whereNull('parent_id')->get(),
             'items_with_children' => CategoryProduct::with('children')->whereNull('parent_id')->get(),
             //'existing_fields' => $this->getFieldsModel(Product::class),
 //            'excluded_fields' => ['additional_fields']
@@ -80,7 +80,7 @@ class ProductAdminController extends AdminController
             'properties',
             'options',
             'gallery',
-            'langs'
+//            'langs'
         ])->where('id', $id)->firstOrFail();
 //        dd($product);
 
@@ -93,7 +93,7 @@ class ProductAdminController extends AdminController
             // редактируемый объект
             'item' => $product,
             // Наследуемые объекты
-            'items' => Product::with('baseLang')->whereNull('parent_id')->whereNot('id', $id)->get(),
+            'items' => Product::whereNull('parent_id')->whereNot('id', $id)->get(),
             // Категории
             'items_with_children' => CategoryProduct::with('children')
                 ->whereNull('parent_id')
@@ -113,7 +113,7 @@ class ProductAdminController extends AdminController
         /*
          * Работа с мультиязычностью
          */
-        $this->updateLangs($request, $id, ProductsDescription::class, 'product_id');
+//        $this->updateLangs($request, $id, ProductsDescription::class, 'product_id');
         /*
          * Работа с опциями
          */

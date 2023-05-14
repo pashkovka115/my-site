@@ -86,21 +86,6 @@ class Product extends Model
         return $value;
     }
 
-    public function langs()
-    {
-        return $this->hasMany(ProductsDescription::class)->with('language');
-    }
-
-    public function baseLang()
-    {
-        $id_lang = Localization::getIdBaseLocale();
-
-        return $this->hasOne(ProductsDescription::class,
-            'product_id',
-            'id'
-        )->where('language_id', $id_lang)->with('language');
-    }
-
 
     public function getRouteKeyName(): string
     {

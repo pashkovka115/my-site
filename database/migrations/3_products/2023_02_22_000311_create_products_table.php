@@ -13,7 +13,15 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('parent_id')->nullable()->default(null);
 
+            $table->string('title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+
+            $table->string('name');
             $table->string('name_lavel', 2)->default('h2');
+            $table->string('slug');
+            $table->text('announce')->nullable();
+            $table->longText('description')->nullable();
 
             $table->integer('sort')->default(0);
             $table->string('img_announce')->nullable();

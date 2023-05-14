@@ -17,51 +17,48 @@ class ProductsSeeder extends Seeder
 
         $products = [];
 
-        $product1 = [
-//            'name' => 'Ковёр',
-//            'slug' => Str::slug('Ковёр'),
-//            'description' => 'Классный ковер',
+        $products[] = [
+            'name' => 'Ковёр',
+            'slug' => Str::slug('Ковёр'),
+            'description' => 'Классный ковер',
             'name_lavel' => 'h2',
             'category_id' => 1,
+            'announce' => $faker->realText($faker->numberBetween(100, 300)),
+            'price' => $price = $faker->numberBetween(1200, 3000),
+            'old_price' => $price + random_int(100, 900),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
 
-        $product2 = [
-//            'name' => 'Чашка',
-//            'slug' => Str::slug('Чашка'),
-//            'description' => 'Кофейная чашка',
+        $products[] = [
+            'name' => 'Чашка',
+            'slug' => Str::slug('Чашка'),
+            'description' => 'Кофейная чашка',
             'name_lavel' => 'h2',
             'category_id' => 1,
+            'announce' => $faker->realText($faker->numberBetween(100, 300)),
+            'price' => $price = $faker->numberBetween(1200, 3000),
+            'old_price' => $price + random_int(100, 900),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
-
-//        $class = include 'templates/TemplateMetaSeeder.php';
-//        $template = $class::template($faker)();
-
-        $products[] =  $product1;
-        $products[] = $product2;
 
 
         for ($i = 1; $i <= $count; $i++){
-
-            $product = [
+            $name = $faker->realText($faker->numberBetween(10, 20));
+            $products[] = [
+                'name' => $name,
+                'slug' => Str::slug($name),
+                'description' => 'Кофейная чашка',
                 'name_lavel' => 'h2',
                 'category_id' => 1,
+                'announce' => $faker->realText($faker->numberBetween(100, 300)),
+                'price' => $price = $faker->numberBetween(1200, 3000),
+                'old_price' => $price + random_int(100, 900),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
 
-//            $class = include 'templates/TemplateMetaSeeder.php';
-//            $template = $class::template($faker)();
-
-            $products[] = $product;
-        }
-        foreach ($products as $key => $product){
-            $price = $faker->numberBetween(1200, 3000);
-            $products[$key]['price'] = $price;
-            $products[$key]['old_price'] = $price + random_int(100, 900);
         }
 
         DB::table('products')->insert($products);
