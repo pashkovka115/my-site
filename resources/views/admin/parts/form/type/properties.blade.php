@@ -57,7 +57,7 @@
         let temlate_property = '<tr draggable="false">'+
             "<td>"+
             '<input type="text" name="properties[new_'+i+'][name]" class="form-control">' +
-    <?php if (isset($item)) echo "'<input type=\"hidden\" name=\"properties[new_'+i+'][product_id]\" value=\"{{ $item->id }}\">'+"; ?>
+    <?php if (isset($item)) echo "'<input type=\"hidden\" name=\"properties[new_'+i+'][product_id]\" value=\"$item->id\">'+"; ?>
             '</td>'+
         '<td>'+
             '<input type="text" name="properties[new_'+i+'][value]" class="form-control">'+

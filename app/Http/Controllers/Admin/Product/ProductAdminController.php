@@ -109,11 +109,6 @@ class ProductAdminController extends AdminController
     public function update(UpdateProductRequest $request, $id)
 //    public function update(Request $request, $id)
     {
-//        $request->dd();
-        /*
-         * Работа с мультиязычностью
-         */
-//        $this->updateLangs($request, $id, ProductsDescription::class, 'product_id');
         /*
          * Работа с опциями
          */
@@ -129,7 +124,7 @@ class ProductAdminController extends AdminController
         /*
          * Сохраняем галерею
          */
-        $this->saveGallary($request, 'img_gallery', 'product_id', $id, ProductImages::class);
+        $this->saveGallary($request, 'gallery', 'product_id', $id, ProductImages::class);
         /*
          * Обновляем сортировку
          */
@@ -151,10 +146,10 @@ class ProductAdminController extends AdminController
             $data['category_id'] = $request->input('category_id');
         }
 
-        if (is_null($data['img_announce'])) {
+        if (array_key_exists('img_announce', $data) and is_null($data['img_announce'])) {
             unset($data['img_announce']);
         }
-        if (is_null($data['img_detail'])) {
+        if (array_key_exists('img_detail', $data) and is_null($data['img_detail'])) {
             unset($data['img_detail']);
         }
 

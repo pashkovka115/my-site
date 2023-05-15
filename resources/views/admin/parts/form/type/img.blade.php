@@ -8,8 +8,8 @@
 		<div class="form-check" style="margin-top: 10px">
 			<input name="delete_{{ $column['origin_name'] }}" class="form-check-input"
 						 type="checkbox"
-						 value="" id="flexCheckChecked{{ $loop->iteration }}">
-			<label class="form-check-label" for="flexCheckChecked{{ $loop->iteration }}">
+						 value="" id="{{ $column['origin_name'] }}{{ $loop->iteration }}">
+			<label class="form-check-label" for="{{ $column['origin_name'] }}{{ $loop->iteration }}">
 				Удалить изображение
 			</label>
 		</div>

@@ -49,10 +49,10 @@ class AdminController extends Controller
     {
         if ($request->has($field_name) and $request->file($field_name)) {
             $subdir = substr(md5(microtime()), mt_rand(0, 30), 2) . '/' . substr(md5(microtime()), mt_rand(0, 30), 2);
-            return $request->file($field_name)->store("uploads/$subdir/" . $path, $disk);
+            return $request->file($field_name)->store("uploads/$path/$subdir/", $disk);
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -64,11 +64,6 @@ class AdminController extends Controller
      */
     public function base_fields(Request $request, string $path_save_img = '')
     {
-        if ($path_save_img) {
-            $path_img_announce = $this->save_img($request, 'img_announce', $path_save_img);
-            $path_img_detail = $this->save_img($request, 'img_detail', $path_save_img);
-        }
-
         /*
          * Обязательные поля для всех публичных страниц
          */
@@ -84,8 +79,22 @@ class AdminController extends Controller
         ];
 
         if ($path_save_img) {
+            $path_img_announce = $this->save_img($request, 'img_announce', $path_save_img);
+            $path_img_detail = $this->save_img($request, 'img_detail', $path_save_img);
+
+//            dd($path_img_announce);
+        }
+
+        if (isset($path_img_announce)){
             $data['img_announce'] = $path_img_announce;
+        }elseif ($request->has('delete_img_announce')) {
+            $data['img_announce'] = '';
+        }
+
+        if (isset($path_img_detail)){
             $data['img_detail'] = $path_img_detail;
+        }elseif ($request->has('delete_img_detail')) {
+            $data['img_detail'] = '';
         }
 
         if ($request->has('parent_id')) {

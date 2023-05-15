@@ -4,7 +4,7 @@
 @isset($item->gallery)
 	<div class="row">
 		@foreach($item->gallery as $img)
-			<div class="col-2 mt-2">
+			<div class="col-2 mt-2 mx-3">
 				<img src="/storage/{{ $img->src }}" alt=""
 						 style="width: auto; height: 110px">
 				<div class="form-check" style="margin-top: 10px">
