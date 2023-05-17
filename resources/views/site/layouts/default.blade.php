@@ -43,7 +43,7 @@
             {!! \App\Servises\Menu::name('Верхнее меню'); !!}
             <div class="col">
                 <div class="header-action-area">
-                    <ul class="header-action">
+                    {{--<ul class="header-action">
                         <li class="currency-menu">
                             <?php $code = session('currency', \App\Models\Currency::baseCode()) ?>
                             <?php if ($code){ ?>
@@ -61,15 +61,14 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul>--}}
 
-                    <ul class="header-action">
+                    {{--<ul class="header-action">
                         <li class="language-menu">
                             <a class="title" href="javascript:;">RU</a>
                             <ul class="language-dropdown">
                                 <li class="language">
                                     <ul>
-                                        {{--Todo: допилить--}}
                                         <li class="active"><a href="#/">RU - Русский</a></li>
                                         <li class="#/"><a href="#/">US - English</a></li>
                                         <li class="#/"><a href="#/">JPY - Japan</a></li>
@@ -77,7 +76,7 @@
                                 </li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul>--}}
 
                     <ul class="header-action">
                         <li class="user-menu">

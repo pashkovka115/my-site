@@ -1,4 +1,3 @@
-@isset($item->additionalFields)
 <div class="">
   <div class="bg-white">
 
@@ -14,65 +13,81 @@
         </tr>
         </thead>
         <tbody id="content_additional_fields">
+        @isset($item->additionalFields)
           @foreach($item->additionalFields as $field)
             <tr>
               <td>
-                <input type="text" name="additional_fields[{{ $field->id }}][name]" class="form-control"
+                <input type="text"
+                       name="additional_fields[{{ $field->id }}][name]"
+                       title="additional_fields[{{ $field->id }}][name] -> {{ $column['type'] }}"
+                       class="form-control"
                        value="{{ $field->name }}">
               </td>
               <td>
-                <input type="text" name="additional_fields[{{ $field->id }}][type]" class="form-control"
+                <input type="text"
+                       name="additional_fields[{{ $field->id }}][type]"
+                       title="additional_fields[{{ $field->id }}][type]"
+                       class="form-control"
                        value="{{ $field->type }}">
               </td>
               <td>
-                <input type="text" name="additional_fields[{{ $field->id }}][key]" class="form-control"
+                <input type="text"
+                       name="additional_fields[{{ $field->id }}][key]"
+                       title="additional_fields[{{ $field->id }}][key] -> {{ $column['type'] }}"
+                       class="form-control"
                        value="{{ $field->key }}" required>
               </td>
               <td>
-          <textarea name="additional_fields[{{ $field->id }}][value]" class="form-control"
-                    title="Произвольно"
+          <textarea name="additional_fields[{{ $field->id }}][value]"
+                    class="form-control"
+                    title="additional_fields[{{ $field->id }}][value] -> {{ $column['type'] }}"
                     rows="1">{{ $field->value }}</textarea>
               </td>
               <td>
                 <input name="additional_fields[{{ $field->id }}][delete_additional_field]"
-                       class="form-check-input delete-property" type="checkbox">
+                       title="additional_fields[{{ $field->id }}][delete_additional_field]"
+                       class="form-check-input delete-property"
+                       type="checkbox">
               </td>
             </tr>
           @endforeach
+        @endisset
         </tbody>
       </table>
     </div>
-      <button type="button"
-              class="btn btn-outline-success mt-2"
-              onclick="addAdditionalField()"
-      >Добавить поле</button>
+    <button type="button"
+            class="btn btn-outline-success mt-2"
+            onclick="addAdditionalField()"
+    >Добавить поле
+    </button>
   </div>
 </div>
 
 @section('script_buttom')
-    @parent
-    <script>
-        let cntAdditionalField = 0;
-        function addAdditionalField(){
-            cntAdditionalField++;
-            let template = '<tr><td>'+
-                '<input type="text" name="additional_fields[new_'+cntAdditionalField+'][name]" class="form-control">'+
-                '</td><td>'+
-                '<input type="text" name="additional_fields[new_'+cntAdditionalField+'][type]" class="form-control">'+
-            '</td><td>' +
-                '<input type="text" name="additional_fields[new_'+cntAdditionalField+'][key]" class="form-control" required>'+
-            '</td><td>'+
-          '<textarea name="additional_fields[new_'+cntAdditionalField+'][value]" class="form-control" title="Произвольно" rows="1"></textarea>'+
-            '</td><td>'+
-                '<button type="button" class="btn btn-outline-danger" onclick="deleteAdditionalField(this)">Удалить поле</button>'+
-            '</td></tr>';
+  @parent
+  <script>
+      let cntAdditionalField = 0;
 
-            let container = $('#content_additional_fields');
-            container.append(template);
-        }
-        function deleteAdditionalField(element){
-            $(element).parents('tr').remove();
-        }
-    </script>
+      function addAdditionalField() {
+          cntAdditionalField++;
+          let template = '<tr><td>' +
+              '<input type="text" name="additional_fields[new_' + cntAdditionalField + '][name]" class="form-control">' +
+              '</td><td>' +
+              '<input type="text" name="additional_fields[new_' + cntAdditionalField + '][type]" class="form-control">' +
+              '</td><td>' +
+              '<input type="text" name="additional_fields[new_' + cntAdditionalField + '][key]" class="form-control" required>' +
+              '</td><td>' +
+              '<textarea name="additional_fields[new_' + cntAdditionalField + '][value]" class="form-control" title="Произвольно" rows="1"></textarea>' +
+              '</td><td>' +
+              '<button type="button" class="btn btn-outline-danger" onclick="deleteAdditionalField(this)">Удалить поле</button>' +
+              '</td></tr>';
+
+          let container = $('#content_additional_fields');
+          container.append(template);
+      }
+
+      function deleteAdditionalField(element) {
+          $(element).parents('tr').remove();
+      }
+  </script>
 @endsection
-@endisset

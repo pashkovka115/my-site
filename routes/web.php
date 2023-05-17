@@ -1,5 +1,6 @@
 <?php
 
+use App\Servises\Admin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('register', [\App\Http\Controllers\Auth\RegisterAdminController::class, 'register'])->middleware('guest')->name('register');
@@ -15,14 +16,14 @@ Route::post('forgot-password', [\App\Http\Controllers\Auth\ForgotPasswordAdminCo
 Route::get('reset-password', [\App\Http\Controllers\Auth\ResetPasswordAdminController::class, 'create'])->middleware('guest')->name('password.reset');
 
 Route::get('currensy/{currencyCode}', [\App\Http\Controllers\SiteController::class, 'changeCurrency'])->name('site.currency');
-Route::get('/', [\App\Http\Controllers\Site\HomeController::class, 'index'])->name('site.home');
+Route::get('/', [\App\Http\Controllers\Site\Home\HomeController::class, 'index'])->name('site.home');
 
 
 // Auth: https://www.youtube.com/watch?v=yfxwAH3MbLY&list=PL-FhWbGlJPfZoUC9ApOR3isDIG88I_lj_
 
 
 // ============================= ADMIN =========================================================================
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\HomeAdminController::class, 'index'])->name('admin.home');
 
     Route::prefix('category')->group(

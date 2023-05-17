@@ -29,19 +29,19 @@ return new class extends Migration
 
             $table->boolean('is_show')->default(true);
 
-            $table->unsignedDouble('price')->default(0.0);
-            $table->unsignedDouble('old_price')->default(0.0);
+            $table->unsignedDouble('price')->nullable()->default(0.0);
+            $table->unsignedDouble('old_price')->nullable()->default(0.0);
 
-            $table->unsignedInteger('quantity')->default(0);
-            $table->unsignedSmallInteger('min_quantity')->default(0);
+            $table->unsignedInteger('quantity')->nullable()->default(0);
+            $table->unsignedSmallInteger('min_quantity')->nullable()->default(0);
 
             $table->boolean('hit')->default(0);
             $table->boolean('is_download')->default(0);
 
-            $table->unsignedInteger('width')->default(0);
-            $table->unsignedInteger('height')->default(0);
-            $table->unsignedInteger('length')->default(0);
-            $table->unsignedInteger('weight')->default(0);
+            $table->unsignedInteger('width')->nullable()->default(0);
+            $table->unsignedInteger('height')->nullable()->default(0);
+            $table->unsignedInteger('length')->nullable()->default(0);
+            $table->unsignedInteger('weight')->nullable()->default(0);
 
             // Номера товара
             $table->string('sku')->nullable();

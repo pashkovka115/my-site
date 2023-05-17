@@ -33,10 +33,14 @@ if (!function_exists('all_categories_but_not_self')) {
 }
 
 ?>
-<select id="{{ $column['origin_name'] }}" name="{{ $column['origin_name'] }}" class="form-select form-select-sm" aria-label="Default select example">
-    <option value="">Нет родителя</option>
-    @if(isset($items_with_children))
-        @foreach($items_with_children as $item_with_children)
+<select id="{{ $column['origin_name'] }}"
+        name="{{ $column['origin_name'] }}"
+        title="{{ $column['origin_name'] }} -> {{ $column['type'] }}"
+        class="form-select form-select-sm"
+        aria-label="Default select example">
+  <option value="">Нет родителя</option>
+  @if(isset($items_with_children))
+    @foreach($items_with_children as $item_with_children)
                 <?php
                 if (!isset($item)) {
                     $item = new stdClass();
@@ -46,8 +50,8 @@ if (!function_exists('all_categories_but_not_self')) {
 
                 all_categories_but_not_self($item_with_children, $item->id, $item->parent_id);
                 ?>
-        @endforeach
-    @else
-        <option value="???">Нехватает переменных из контроллера в шаблон</option>
-    @endif
+    @endforeach
+  @else
+    <option value="???">Нехватает переменных из контроллера в шаблон</option>
+  @endif
 </select>

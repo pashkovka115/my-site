@@ -78,7 +78,7 @@ return new class extends Migration
                 'sort_single' => 220,
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
-                'type' => 'name_lavel',
+                'type' => 'select.name_lavel',
                 'tab_id' => 5,
                 'description' => '',
             ],
@@ -106,7 +106,7 @@ return new class extends Migration
             ],
             [
                 'origin_name' => 'img_announce',
-                'show_name' => 'Изображение в анонсе',
+                'show_name' => 'Изображение в анонсе 480x480',
                 'sort_list' => 50,
                 'sort_single' => 60,
                 'is_show_anons' => 0,
@@ -139,7 +139,7 @@ return new class extends Migration
             ],
             [
                 'origin_name' => 'img_detail',
-                'show_name' => 'Изображение в детальном описании',
+                'show_name' => 'Изображение в детальном описании 800x800',
                 'sort_list' => 50,
                 'sort_single' => 80,
                 'is_show_anons' => 0,
@@ -150,7 +150,7 @@ return new class extends Migration
             ],
             [
                 'origin_name' => 'gallery',
-                'show_name' => 'Галерея изображений',
+                'show_name' => 'Галерея изображений 800x800',
                 'sort_list' => 50,
                 'sort_single' => 90,
                 'is_show_anons' => 0,

@@ -30,18 +30,22 @@ if (!function_exists('all_categories')) {
 }
 
 ?>
-<select id="{{ $column['origin_name'] }}" name="{{ $column['origin_name'] }}" class="form-select form-select-sm" aria-label="Default select example">
-    @if(isset($items_with_children))
+<select id="{{ $column['origin_name'] }}"
+        name="{{ $column['origin_name'] }}"
+        title="{{ $column['origin_name'] }} -> {{ $column['type'] }}"
+        class="form-select form-select-sm"
+        aria-label="Default select example">
+  @if(isset($items_with_children))
             <?php
             if (isset($item)) {
                 $id = $item->category_id;
             } else {
                 $id = false;
             } ?>
-        @foreach($items_with_children as $item_with_children)
+    @foreach($items_with_children as $item_with_children)
                 <?php all_categories($item_with_children, $id); ?>
-        @endforeach
-    @else
-        <option value="???">Нехватает переменных из контроллера в шаблон</option>
-    @endif
+    @endforeach
+  @else
+    <option value="???">Нехватает переменных из контроллера в шаблон</option>
+  @endif
 </select>

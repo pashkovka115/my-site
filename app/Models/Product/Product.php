@@ -4,16 +4,15 @@ namespace App\Models\Product;
 
 use App\Models\CategoryProduct\CategoryProduct;
 use App\Models\Currency;
-use App\Models\Language;
 use App\Models\Product\Attributes\Option;
 use App\Models\Product\Attributes\Property;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Servises\Admin;
 use App\Servises\CurrencyConversion;
-use App\Servises\Localization\Localization;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
@@ -67,9 +66,24 @@ class Product extends Model
     }
 
 
+    /* Start Fields */
+    /*public function imgAnnounce(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => is_null($value) || $value == '' ? 'assets/site/img/shop/default_product.jpg' : $value,
+        );
+    }
+    public function imgDetail(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => is_null($value) || $value == '' ? 'assets/site/img/shop/default_product.jpg' : $value,
+        );
+    }*/
+
+
     public function getPriceAttribute($value)
     {
-        if(request()->segment(1) != 'admin'){
+        if(request()->segment(1) != Admin::prefix()){
             $currency = self::currency();
             return $currency->symbol_left . round(CurrencyConversion::convert($value), 2) . $currency->symbol_right;
         }
@@ -79,12 +93,16 @@ class Product extends Model
 
     public function getOldPriceAttribute($value)
     {
-        if(request()->segment(1) != 'admin'){
+        if ($value == 0){
+            return 0;
+        }
+        if(request()->segment(1) != Admin::prefix()){
             $currency = self::currency();
             return $currency->symbol_left . round(CurrencyConversion::convert($value), 2) . $currency->symbol_right;
         }
         return $value;
     }
+    /* End Fields */
 
 
     public function getRouteKeyName(): string

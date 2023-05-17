@@ -81,8 +81,9 @@
 <!--== Scroll Top Button ==-->
 <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
 
+@yield('modals')
 <!--== Start Quick View Menu ==-->
-<aside class="product-quick-view-modal">
+{{--<aside class="product-quick-view-modal">
 	<div class="product-quick-view-inner">
 		<div class="product-quick-view-content">
 			<button type="button" class="btn-close">
@@ -135,7 +136,7 @@
 		</div>
 	</div>
 	<div class="canvas-overlay"></div>
-</aside>
+</aside>--}}
 <!--== End Quick View Menu ==-->
 
 <!--== Start Side Menu ==-->
@@ -198,7 +199,7 @@
 
 <!--=== jQuery Custom Js ===-->
 <script src=" <?= asset('assets/site') ?>/js/custom.js"></script>
-
+@yield('script_bottom')
 </body>
 
 </html>

@@ -18,16 +18,9 @@
 			<div class="tab-pane tab-example-design fade show @if($loop->first) active @endif"
 					 id="pills-accordions-design{{ $loop->iteration }}"
 					 role="tabpanel" aria-labelledby="pills-accordions-design-tab{{ $loop->iteration }}">
-				@include('admin.parts.form_edit', ['columns' => $tab['columns'], 'item' => $item])
+				@include('admin.parts.form_create', ['columns' => $tab['columns']])
 			</div>
 		@endif
 	@endforeach
 </div>
-<div class="">
-	<div class="btn-group save-group" role="group" aria-label="Basic mixed styles example">
-		<button type="submit" class="btn btn-danger" name="save_and_back">Сохранить и вернуться в список</button>
-		<button type="submit" class="btn btn-warning" name="save_and_new">Сохранить и добавить новый</button>
-		<button type="submit" class="btn btn-success" name="save_and_edit">Сохранить и продолжить редактирование
-		</button>
-	</div>
-</div>
+@include('admin.parts.buttons_three')

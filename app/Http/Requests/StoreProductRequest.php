@@ -15,6 +15,7 @@ class StoreProductRequest extends MetaGeneralRequest
     {
         $rules = [
             'category_id' => ['required', 'integer'],
+            'name' => ['required', 'string'],
             'is_show' => ['in:1,0'],
             'hit' => ['in:1,0'],
             'is_download' => ['in:1,0'],

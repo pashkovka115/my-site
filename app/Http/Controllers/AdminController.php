@@ -49,7 +49,8 @@ class AdminController extends Controller
     {
         if ($request->has($field_name) and $request->file($field_name)) {
             $subdir = substr(md5(microtime()), mt_rand(0, 30), 2) . '/' . substr(md5(microtime()), mt_rand(0, 30), 2);
-            return $request->file($field_name)->store("uploads/$path/$subdir/", $disk);
+
+            return $request->file($field_name)->store("uploads/$path/$subdir", $disk);
         }
 
         return null;

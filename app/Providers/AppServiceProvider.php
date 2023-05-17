@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::defaultView('vendor.pagination.my_site');
+
         require base_path('app/Servises/functions.php');
+
         $this->loadMigrationsFrom([
             'database/migrations/1_base',
             'database/migrations/2_categories_product',
