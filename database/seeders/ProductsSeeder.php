@@ -20,7 +20,7 @@ class ProductsSeeder extends Seeder
         $products[] = [
             'name' => 'Ковёр',
             'slug' => Str::slug('Ковёр'),
-            'description' => 'Классный ковер',
+            'description' => 'Классный ковер. ' . $faker->realText($faker->numberBetween(300, 700)),
             'name_lavel' => 'h2',
             'category_id' => 1,
             'announce' => $faker->realText($faker->numberBetween(100, 300)),
@@ -33,7 +33,7 @@ class ProductsSeeder extends Seeder
         $products[] = [
             'name' => 'Чашка',
             'slug' => Str::slug('Чашка'),
-            'description' => 'Кофейная чашка',
+            'description' => 'Кофейная чашка. ' . $faker->realText($faker->numberBetween(300, 700)),
             'name_lavel' => 'h2',
             'category_id' => 1,
             'announce' => $faker->realText($faker->numberBetween(100, 300)),
@@ -49,7 +49,7 @@ class ProductsSeeder extends Seeder
             $products[] = [
                 'name' => $name,
                 'slug' => Str::slug($name),
-                'description' => 'Кофейная чашка',
+                'description' =>  $faker->realText($faker->numberBetween(300, 700)),
                 'name_lavel' => 'h2',
                 'category_id' => 1,
                 'announce' => $faker->realText($faker->numberBetween(100, 300)),

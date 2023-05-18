@@ -21,6 +21,17 @@ Route::get('/', [\App\Http\Controllers\Site\Home\HomeController::class, 'index']
 
 // Auth: https://www.youtube.com/watch?v=yfxwAH3MbLY&list=PL-FhWbGlJPfZoUC9ApOR3isDIG88I_lj_
 
+Route::get('test', [\App\Http\Controllers\TestController::class, 'test']);
+
+Route::prefix('product')->group(function (){
+    Route::get('{slug}', [\App\Http\Controllers\Site\Product\ProductController::class, 'show'])->name('site.product.show');
+});
+
+Route::prefix('cart')->group(function (){
+    Route::get('', [\App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('site.cart');
+    Route::get('ajax/add', [\App\Http\Controllers\Site\Cart\CartController::class, 'store'])->name('site.cart.ajax.add');
+});
+
 
 // ============================= ADMIN =========================================================================
 Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function () {

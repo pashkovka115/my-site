@@ -9,7 +9,7 @@ class HomeController extends SiteController
 {
     public function index()
     {
-        $products = Product::paginate();
+        $products = Product::where('is_show', true)->paginate();
 
         return view('site.home.index', compact('products'));
     }

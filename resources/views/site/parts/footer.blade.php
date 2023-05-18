@@ -197,9 +197,10 @@
 <!--=== jQuery Countdown Js ===-->
 <script src=" <?= asset('assets/site') ?>/js/countdown.js"></script>
 
+@yield('script_bottom')
+
 <!--=== jQuery Custom Js ===-->
 <script src=" <?= asset('assets/site') ?>/js/custom.js"></script>
-@yield('script_bottom')
 </body>
 
 </html>

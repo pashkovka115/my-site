@@ -28,13 +28,16 @@
 												<div class="inner-content">
 													<div class="product-thumb">
 														@if($product->img_announce)
-														<a href="shop-single.html">
+														<a href="{{ route('site.product.show', ['slug' => $product->slug]) }}">
 															<img class="w-100" src="{{ 'storage/' . $product->img_announce }}" alt="Image-HasTech">
 														</a>
 														@endif
 														<div class="product-action">
 															<div class="addto-wrap">
-																<a class="add-cart" href="shop-cart.html">
+																<a class="add-cart"
+																	 href="#"
+																	 data-id="{{ $product->id }}"
+																>
                                   <span class="icon">
                                     <i class="bardy bardy-shopping-cart"></i>
                                     <i class="hover-icon bardy bardy-shopping-cart"></i>
@@ -46,7 +49,7 @@
                                     <i class="hover-icon bardy bardy-wishlist"></i>
                                   </span>
 																</a>
-																<a class="add-quick-view" href="javascript:void(0);">
+																<a class="add-quick-view" href="#" onclick="showProductModal({{ $product->id }})">
                                   <span class="icon">
                                     <i class="bardy bardy-quick-view"></i>
                                     <i class="hover-icon bardy bardy-quick-view"></i>
@@ -59,7 +62,9 @@
 													</div>
 													<div class="product-desc">
 														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">{{ $product->name }}</a></h4>
+															<h4 class="title">
+																<a href="{{ route('site.product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+															</h4>
 															{{-- todo: Рейтинг
 															<div class="star-content">
 																<i class="fa fa-star-o"></i>
@@ -89,470 +94,6 @@
 								</div>
 								<div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
 									<div class="row">
-										{{--<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/1.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">1. New and sale badge product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 110.00 </span>
-																<span class="price-old">Tk 130.00</span>
-															</div>
-															<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/11.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">10. This is the large title for testing large title and there is an image for testing</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 19.00 </span>
-																<span class="price-old">Tk 21.00</span>
-															</div>
-															<p>A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal...</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/10.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">11. Product with video</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 39.00 </span>
-															</div>
-															<p>As opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for...</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/2.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">2. New badge product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 80.00 </span>
-															</div>
-															<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/3.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">3. Variable product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 40.00 </span>
-																<span class="price-old">Tk 85.00</span>
-															</div>
-															<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/4.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">4. Soldout product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 19.00 </span>
-																<span class="price-old">Tk 29.00</span>
-															</div>
-															<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/5.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">5. Simple product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 50.00 </span>
-															</div>
-															<p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/6.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">6. Variable with soldout product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 55.00 </span>
-																<span class="price-old">Tk 75.00</span>
-															</div>
-															<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/7.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">7. Sample affiliate product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 29.00 </span>
-															</div>
-															<p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>--}}
 										@foreach($products as $product)
 										<div class="col-12">
 											<!--== Start Shop Item ==-->
@@ -560,7 +101,7 @@
 												<div class="inner-content">
 													<div class="product-thumb">
 														@if($product->img_announce)
-														<a href="shop-single.html">
+														<a href="{{ route('site.product.show', ['slug' => $product->slug]) }}">
 															<img class="w-100" src="{{ 'storage/' . $product->img_announce }}" alt="Image-HasTech">
 														</a>
 														@endif
@@ -569,7 +110,9 @@
 													</div>
 													<div class="product-desc">
 														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">{{ $product->name }}</a></h4>
+															<h4 class="title">
+																<a href="{{ route('site.product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+															</h4>
 															{{-- todo: Рейтинг
 															<div class="star-content">
 																<i class="fa fa-star-o"></i>
@@ -587,7 +130,10 @@
 															{!! $product->announce !!}
 															<div class="product-action">
 																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
+																	<a class="add-cart"
+																		 href="#"
+																		 data-id="{{ $product->id }}"
+																	>
                                     <span class="icon">
                                       <i class="bardy bardy-shopping-cart"></i>
                                       <i class="hover-icon bardy bardy-shopping-cart"></i>
@@ -600,7 +146,7 @@
                                       <i class="hover-icon bardy bardy-wishlist"></i>
                                     </span>
 																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
+																	<a class="add-quick-view" href="#" onclick="showProductModal({{ $product->id }})">
                                     <span class="icon">
                                       <i class="bardy bardy-quick-view"></i>
                                       <i class="hover-icon bardy bardy-quick-view"></i>
@@ -615,262 +161,6 @@
 											<!--== End Shop Item ==-->
 										</div>
 										@endforeach
-										{{--<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/9.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">9. Without shortcode product</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 79.00 </span>
-															</div>
-															<p>we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that...</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/12.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">Demo product title</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 29.00 </span>
-															</div>
-															<p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/5.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">Demo product title</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 50.00 </span>
-															</div>
-															<p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/13.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">Demo product title</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 80.00 </span>
-															</div>
-															<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>
-										<div class="col-12">
-											<!--== Start Shop Item ==-->
-											<div class="product-item product-item-list">
-												<div class="inner-content">
-													<div class="product-thumb">
-														<a href="shop-single.html">
-															<img class="w-100" src="assets/img/shop/14.jpg" alt="Image-HasTech">
-														</a>
-													</div>
-													<div class="product-desc">
-														<div class="product-info">
-															<h4 class="title"><a href="shop-single.html">Demo product title</a></h4>
-															<div class="star-content">
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-																<i class="fa fa-star-o"></i>
-															</div>
-															<div class="prices">
-																<span class="price">Tk 19.00 </span>
-																<span class="price-old">Tk 21.00</span>
-															</div>
-															<p>A long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal...</p>
-															<div class="product-action">
-																<div class="addto-wrap">
-																	<a class="add-cart" href="shop-cart.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-shopping-cart"></i>
-                                      <i class="hover-icon bardy bardy-shopping-cart"></i>
-                                    </span>
-																	</a>
-																	<a class="add-wishlist" href="wishlist.html">
-                                    <span class="icon">
-                                      <i class="bardy bardy-wishlist"></i>
-                                      <i class="hover-icon bardy bardy-wishlist"></i>
-                                    </span>
-																	</a>
-																	<a class="add-quick-view" href="javascript:void(0);">
-                                    <span class="icon">
-                                      <i class="bardy bardy-quick-view"></i>
-                                      <i class="hover-icon bardy bardy-quick-view"></i>
-                                    </span>
-																	</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!--== End Shop Item ==-->
-										</div>--}}
 									</div>
 									<!--== Start Pagination Wrap ==-->
 									{{ $products->links() }}
@@ -886,7 +176,8 @@
 @endsection
 
 @section('modals')
-	<aside class="product-quick-view-modal">
+	@foreach($products as $product)
+	<aside class="product-quick-view-modal" data-product_id="{{ $product->id }}">
 		<div class="product-quick-view-inner">
 			<div class="product-quick-view-content">
 				<button type="button" class="btn-close">
@@ -895,17 +186,21 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-12">
 						<div class="thumb">
-							<img src=" <?= asset('assets/site') ?>/img/shop/quick-view1.jpg" alt="Alan-Shop">
+							@if($product->img_detail)
+							<img src="{{ asset('storage/' . $product->img_detail) }}" alt="Alan-Shop">
+							@endif
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-12">
 						<div class="content">
-							<h4 class="title">3. Variable product</h4>
+							<h4 class="title">{{ $product->name }}</h4>
 							<div class="prices">
-								<del class="price-old">$85.00</del>
-								<span class="price">$70.00</span>
+								@if($product->old_price)
+									<del class="price-old">{{ $product->old_price }}</del>
+								@endif
+									<span class="price">{{ $product->price }}</span>
 							</div>
-							<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,</p>
+							{!! $product->description !!}
 							<div class="quick-view-select">
 								<div class="quick-view-select-item">
 									<label for="forSize" class="form-label">Size:</label>
@@ -929,9 +224,13 @@
 							</div>
 							<div class="action-top">
 								<div class="pro-qty">
-									<input type="text" id="quantity2" title="Quantity" value="1" />
+									<input type="text" id="quantity{{ $loop->iteration }}" title="Quantity" value="1" />
 								</div>
-								<button class="btn btn-black">Add to cart</button>
+								<a href="#"
+									 class="btn btn-black add-cart"
+									 data-id="{{ $product->id }}"
+								>В корзину</a>
+{{--								<button class="btn btn-black">Add to cart</button>--}}
 							</div>
 						</div>
 					</div>
@@ -940,10 +239,48 @@
 		</div>
 		<div class="canvas-overlay"></div>
 	</aside>
+	@endforeach
 @endsection
 
 @section('script_bottom')
+	@parent
 	<script>
+		// Add to cart
+		$('.add-cart').on('click', function (e){
+			e.preventDefault();
+			const $this = $(this);
+			const id = $this.data('id');
+			let qty = $this.parents('div.action-top input').val() ? $this.parents('div.action-top input').val() : 1;
+
+			$.ajax({
+				url: "{{ route('site.cart.ajax.add') }}",
+				type: 'GET',
+				data: {id: id, qty: qty},
+				success: function (res){
+					console.log(res)
+				},
+				error: function (res){
+					console.log(res);
+				}
+			});
+
+			// console.log("/cart/add/" + id)
+		});
+
+
+		function showProductModal(productId){
+			let popupProduct = $('aside[data-product_id='+productId+']');
+			// console.log(popupProduct)
+			popupProduct.addClass('active');
+			$("body").addClass("fix");
+
+			$(".btn-close, .canvas-overlay").on('click', function() {
+				popupProduct.removeClass('active');
+				$("body").removeClass("fix");
+			});
+		}
+
+		// Remember view style (grid or list)
 		let tab_class = 'active';
 		let panel_class = 'show';
 

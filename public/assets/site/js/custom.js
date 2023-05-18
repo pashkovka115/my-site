@@ -122,7 +122,7 @@
   });
 
   // Popup Quick View JS
-  var popupProduct = $(".product-quick-view-modal");
+  /*var popupProduct = $(".product-quick-view-modal");
   $(".add-quick-view").on('click', function() {
     popupProduct.addClass('active');
     $("body").addClass("fix");
@@ -130,7 +130,7 @@
   $(".btn-close, .canvas-overlay").on('click', function() {
     popupProduct.removeClass('active');
     $("body").removeClass("fix");
-  });
+  });*/
 
   // Review Form JS
   $(".review-write-btn").on('click', function() {
