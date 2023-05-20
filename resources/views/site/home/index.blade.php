@@ -250,21 +250,24 @@
 			e.preventDefault();
 			const $this = $(this);
 			const id = $this.data('id');
-			let qty = $this.parents('div.action-top input').val() ? $this.parents('div.action-top input').val() : 1;
+			let qty = $this.prev().find('input[id^=quantity]').val() ? $this.prev().find('input[id^=quantity]').val() : 1;
+            qty = parseInt(qty);
 
 			$.ajax({
 				url: "{{ route('site.cart.ajax.add') }}",
-				type: 'GET',
+				type: 'POST',
 				data: {id: id, qty: qty},
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
 				success: function (res){
-					console.log(res)
+                    let number = parseInt($('button.mini-cart-toggle span.number').text());
+                    $('button.mini-cart-toggle span.number').text(number + qty);
 				},
 				error: function (res){
 					console.log(res);
 				}
 			});
-
-			// console.log("/cart/add/" + id)
 		});
 
 

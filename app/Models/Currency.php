@@ -15,7 +15,13 @@ class Currency extends Model
 
     public static function baseCode()
     {
-        $baseCurrency = self::where('base', true)->first();
+        if (session('baseCurrency') == null){
+            $baseCurrency = self::where('base', true)->first();
+            session()->put('baseCurrency', $baseCurrency);
+        }else{
+            $baseCurrency = session('baseCurrency');
+        }
+
         if ($baseCurrency){
             return $baseCurrency->code;
         }

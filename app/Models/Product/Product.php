@@ -53,39 +53,38 @@ class Product extends Model
     }
 
 
-    private static function currency()
+    /*private static function currency()
     {
-        $originCurrency = Currency::where('base', true)->first();
+        if (session('originCurrency') == null){
+            $originCurrency = Currency::where('base', true)->first();
+            session()->put('originCurrency', $originCurrency);
+        }else{
+            $originCurrency = session('originCurrency');
+        }
+
         if ($originCurrency) {
             $targetCurrencyCode = session('currency', $originCurrency->code);
             if ($targetCurrencyCode){
-                return Currency::where('code', $targetCurrencyCode)->first();
+                if (session('currentCurrency') == null){
+                    $currentCurrency = Currency::where('code', $targetCurrencyCode)->first();
+                    session()->put('currentCurrency', $currentCurrency);
+                }else{
+                    $currentCurrency = session('currentCurrency');
+                }
+                return $currentCurrency;
             }
         }
         return false;
-    }
+    }*/
 
 
     /* Start Fields */
-    /*public function imgAnnounce(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => is_null($value) || $value == '' ? 'assets/site/img/shop/default_product.jpg' : $value,
-        );
-    }
-    public function imgDetail(): Attribute
-    {
-        return Attribute::make(
-            get: fn ($value) => is_null($value) || $value == '' ? 'assets/site/img/shop/default_product.jpg' : $value,
-        );
-    }*/
 
 
     public function getPriceAttribute($value)
     {
         if(request()->segment(1) != Admin::prefix()){
-            $currency = self::currency();
-            return $currency->symbol_left . round(CurrencyConversion::convert($value), 2) . $currency->symbol_right;
+            return CurrencyConversion::convert($value);
         }
         return $value;
     }
@@ -97,8 +96,7 @@ class Product extends Model
             return 0;
         }
         if(request()->segment(1) != Admin::prefix()){
-            $currency = self::currency();
-            return $currency->symbol_left . round(CurrencyConversion::convert($value), 2) . $currency->symbol_right;
+            return CurrencyConversion::convert($value);
         }
         return $value;
     }

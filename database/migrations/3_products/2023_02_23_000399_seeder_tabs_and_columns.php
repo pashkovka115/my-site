@@ -322,7 +322,7 @@ return new class extends Migration
             'sort_single' => 40,
             'is_show_anons' => 0,
             'is_show_single' => 1,
-            'type' => 'string',
+            'type' => 'number',
             'tab_id' => 1,
             'description' => '',
         ];
@@ -333,7 +333,7 @@ return new class extends Migration
             'sort_single' => 40,
             'is_show_anons' => 0,
             'is_show_single' => 1,
-            'type' => 'string',
+            'type' => 'number',
             'tab_id' => 1,
             'description' => '',
         ];

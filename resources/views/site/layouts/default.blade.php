@@ -13,7 +13,7 @@
 <!--== End Preloader Content ==-->
 
 <!--== Start Top Notification Wrapper ==-->
-<div class="top-notification-bar">
+{{--<div class="top-notification-bar">
     <div class="container">
         <div class="row">
             <div class="notification-entry text-center col-12">
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--}}
 <!--== End Top Notification Wrapper ==-->
 
 <!--== Start Header Wrapper ==-->
@@ -62,22 +62,6 @@
                             </ul>
                         </li>
                     </ul>--}}
-
-                    {{--<ul class="header-action">
-                        <li class="language-menu">
-                            <a class="title" href="javascript:;">RU</a>
-                            <ul class="language-dropdown">
-                                <li class="language">
-                                    <ul>
-                                        <li class="active"><a href="#/">RU - Русский</a></li>
-                                        <li class="#/"><a href="#/">US - English</a></li>
-                                        <li class="#/"><a href="#/">JPY - Japan</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>--}}
-
                     <ul class="header-action">
                         <li class="user-menu">
                             <a class="title" href="javascript:;"><i class="fa fa-user-o"></i></a>
@@ -143,7 +127,7 @@
                                 <div class="mini-cart-footer">
                                     <h4>Subtotal: <span class="total">Tk 130.00</span></h4>
                                     <div class="cart-btn">
-                                        <a href="shop-cart.html">View Cart</a>
+                                        <a href="{{ route('site.cart') }}">Корзина</a>
                                         <a href="shop-checkout.html">Checkout</a>
                                     </div>
                                 </div>
@@ -168,9 +152,9 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="page-header-content">
-                            <{{$name_lavel}} class
-                            ="title" data-aos="fade-down" data-aos-duration="1200">@yield('page_title')</{{$name_lavel}}
-                        >
+                            <{{$name_lavel}}
+                                class="title" data-aos="fade-down"
+                            data-aos-duration="1200">@yield('page_title')</{{$name_lavel}}>
                         <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1000">
                             <ul class="breadcrumb">
                                 @foreach($breads as $link => $text)

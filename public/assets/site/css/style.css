@@ -46,6 +46,7 @@ h1, h2, h3, h4, h5, h6,
   margin-top: 0;
 }
 
+button.theme-default-button,
 a {
   color: #ff383f;
   text-decoration: none;
@@ -4094,6 +4095,7 @@ section .container-fluid {
 .shopping-cart-wrap .cart-payment .cart-total table .order-total {
   border-top: 1px solid #fff;
 }
+.shopping-cart-wrap .cart-payment .cart-total table .cart-subtotal th,
 .shopping-cart-wrap .cart-payment .cart-total table .order-total th,
 .shopping-cart-wrap .cart-payment .cart-total table .order-total td {
   font-weight: 600;
@@ -4114,7 +4116,7 @@ section .container-fluid {
   border-color: #ff383f;
   font-family: "Oswald", sans-serif;
   border-radius: 50px;
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/
   font-weight: 600;
   letter-spacing: 0.25px;
   border-width: 1px;
