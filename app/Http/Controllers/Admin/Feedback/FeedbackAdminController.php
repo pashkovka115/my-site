@@ -6,7 +6,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Requests\StoreFeedbackRequest;
 use App\Http\Requests\UpdateFeedbackRequest;
 use App\Models\Feedback\Feedback;
-use App\Models\Feedback\FeedbackAdditionalFields;
 use App\Models\Feedback\FeedbackColumns;
 use App\Models\Feedback\FeedbackTabs;
 
@@ -60,22 +59,16 @@ class FeedbackAdminController extends AdminController
         $this->updateSort($request, FeedbackColumns::class);
 
         /*
-         * Работа со свойствами
-         */
-        $this->updateAdditionalFields($request, 'feedback_id', $id, FeedbackAdditionalFields::class);
-
-
-        /*
          * Работа с сообщением
          */
         $category = Feedback::where('id', $id)->firstOrFail();
 
         $data = $this->base_fields($request, self::IMAGE_PATH);
 
-        if (is_null($data['img_announce'])) {
+        if (array_key_exists('img_announce', $data) and is_null($data['img_announce'])) {
             unset($data['img_announce']);
         }
-        if (is_null($data['img_detail'])) {
+        if (array_key_exists('img_detail', $data) and is_null($data['img_detail'])) {
             unset($data['img_detail']);
         }
 

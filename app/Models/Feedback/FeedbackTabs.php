@@ -12,6 +12,7 @@ class FeedbackTabs extends General
 
     protected $table = 'feedback_tabs';
     public $timestamps = false;
+    protected $guarded = ['id'];
 
 
     /**

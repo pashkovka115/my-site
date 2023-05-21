@@ -263,6 +263,7 @@
 				success: function (res){
                     let number = parseInt($('button.mini-cart-toggle span.number').text());
                     $('button.mini-cart-toggle span.number').text(number + qty);
+					console.log(res)
 				},
 				error: function (res){
 					console.log(res);

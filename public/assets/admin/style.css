@@ -69,3 +69,10 @@ span.red {
     padding: 0.5rem;
 }
 
+@media (min-width: 576px) {
+    .modal-dialog {
+        margin: 1.75rem 10%;
+        /*max-width: 500px;*/
+    }
+}
+

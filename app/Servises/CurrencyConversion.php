@@ -26,7 +26,7 @@ class CurrencyConversion
             }
 
             return $targetCurrency->symbol_left
-                . (number_format($sum * $baseCurrency->rate / $targetCurrency->rate, 2, ',', ' '))
+                . (number_format($sum * $baseCurrency->rate / $targetCurrency->rate, 0, ',', ' '))
                 . $targetCurrency->symbol_right;
         }
         return false;

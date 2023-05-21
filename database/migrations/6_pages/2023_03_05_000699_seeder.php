@@ -1,18 +1,39 @@
 <?php
 
-namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
-class CategoriesProductColumnsSeeder extends Seeder
+return new class extends Migration
 {
-    public function run(): void
+    public function up(): void
     {
-       /* $class = include 'templates/TemplateTableColumnsSeeder.php';
-        $fields = $class::template()();*/
+        $tabs = [
+            [
+                'name' => 'Общее',
+            ],
+            [
+                'name' => 'Связи',
+            ],
+            [
+                'name' => 'SEO',
+            ],
+        ];
+
+        DB::table('pages_tabs')->insert($tabs);
+
+
+        /*$class = include base_path('database/seeders/templates/TemplateTableColumnsSeeder.php');
+        $fields = $class::template()();
+        // Всего 3 вкладки
+        foreach ($fields as $key => $field){
+            if ($field['tab_id'] > 3){
+                $fields[$key]['tab_id'] = 3;
+            }
+        }*/
+//        print_r($fields);
+
         $fields = [
             [
                 'origin_name' => 'id',
@@ -32,7 +53,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'string',
-                'tab_id' => 5,
+                'tab_id' => 3,
             ],
             [
                 'origin_name' => 'name',
@@ -51,8 +72,8 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'sort_single' => 220,
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
-                'type' => 'name_lavel',
-                'tab_id' => 5,
+                'type' => 'select.name_lavel',
+                'tab_id' => 3,
             ],
             [
                 'origin_name' => 'slug',
@@ -62,7 +83,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 1,
                 'is_show_single' => 1,
                 'type' => 'string',
-                'tab_id' => 5,
+                'tab_id' => 3,
             ],
             [
                 'origin_name' => 'announce',
@@ -132,7 +153,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'string',
-                'tab_id' => 5,
+                'tab_id' => 3,
             ],
             [
                 'origin_name' => 'meta_description',
@@ -142,7 +163,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'text',
-                'tab_id' => 5,
+                'tab_id' => 3,
             ],
             [
                 'origin_name' => 'created_at',
@@ -165,17 +186,45 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'tab_id' => 1,
             ],
             [
-                'origin_name' => 'parent_id',
-                'show_name' => 'Родительская категория',
+                'origin_name' => 'properties',
+                'show_name' => 'Свойства с одним значением',
+                'sort_list' => 10,
+                'sort_single' => 120,
+                'is_show_anons' => 0,
+                'is_show_single' => 1,
+                'type' => 'properties',
+                'tab_id' => 2
+            ],
+            [
+                'origin_name' => 'options',
+                'show_name' => 'Опции с множественными значениями',
+                'sort_list' => 10,
+                'sort_single' => 130,
+                'is_show_anons' => 0,
+                'is_show_single' => 1,
+                'type' => 'options',
+                'tab_id' => 2
+            ],
+            [
+                'origin_name' => 'is_show',
+                'show_name' => 'Видимость',
                 'sort_list' => 10,
                 'sort_single' => 10,
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
-                'type' => 'select.all_categories_but_not_self',
+                'type' => 'is_show',
                 'tab_id' => 1
-            ],
+            ]
         ];
 
-        DB::table('categories_product_columns')->insert($fields);
+        DB::table('pages_columns')->insert($fields);
+
     }
-}
+
+
+    public function down(): void
+    {
+        DB::table('pages_columns')->truncate();
+        DB::table('pages_tabs')->truncate();
+    }
+};

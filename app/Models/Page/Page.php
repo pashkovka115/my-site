@@ -2,6 +2,7 @@
 
 namespace App\Models\Page;
 
+use App\Models\Page\Attributes\Option;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
@@ -14,9 +15,14 @@ class Page extends Model
 
     protected $guarded = ['id'];
 
-    public function additionalFields()
+    /*public function additionalFields()
     {
         return $this->hasMany(PageAdditionalFields::class, 'page_id');
+    }*/
+
+    public function options()
+    {
+        return $this->hasMany(Option::class)->with('values');
     }
 
 

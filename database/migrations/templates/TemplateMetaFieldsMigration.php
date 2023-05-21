@@ -12,7 +12,7 @@ return new class {
             $table->string('title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();
-            $table->string('name_lavel', 2)->default('h2');
+            $table->string('name_lavel', 2)->nullable()->default('h2');
 
             $table->string('name');
             $table->string('slug');

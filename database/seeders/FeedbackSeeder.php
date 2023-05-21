@@ -21,7 +21,6 @@ class FeedbackSeeder extends Seeder
                 'user_id' => $i === 1 ? 1 : null,
                 'name' => $name,
                 'email' => $faker->unique()->email,
-                'slug' => Str::slug($name),
                 'description' => $faker->realText(),
                 'checked' => 0,
                 'created_at' => Carbon::now(),

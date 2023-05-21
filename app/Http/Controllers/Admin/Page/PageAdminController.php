@@ -44,7 +44,7 @@ class PageAdminController extends AdminController
 
     public function edit($id)
     {
-        $item = Page::with(['additionalFields', 'gallery'])->where('id', $id)->firstOrFail();
+        $item = Page::with(['options', 'gallery'])->where('id', $id)->firstOrFail();
 
         return view('admin.page.edit', [
             'item' => $item,
@@ -72,7 +72,7 @@ class PageAdminController extends AdminController
         /*
          * Работа со свойствами
          */
-        $this->updateAdditionalFields($request, 'page_id', $id, PageAdditionalFields::class);
+//        $this->updateAdditionalFields($request, 'page_id', $id, PageAdditionalFields::class);
 
         /*
          * Работа со страницей

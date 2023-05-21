@@ -14,8 +14,15 @@ return new class extends Migration
             $table->string('email');
             $table->boolean('checked')->default(false);
 
-            $class = include base_path('database/migrations/templates/TemplateMetaFieldsMigration.php');
-            $class::template($table)();
+           /* $class = include base_path('database/migrations/templates/TemplateMetaFieldsMigration.php');
+            $class::template($table)();*/
+            $table->string('title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+
+            $table->string('name');
+            $table->integer('sort')->default(0);
+            $table->longText('description')->nullable();
 
             $table->timestamps();
 

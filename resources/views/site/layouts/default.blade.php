@@ -92,7 +92,7 @@
                         <div class="header-mini-cart">
                             <button class="mini-cart-toggle">
                                 <i class="icon bardy bardy-shopping-cart"></i>
-                                <span class="number">2</span>
+                                <span class="number">{{ \Cart::session($_COOKIE[\App\Servises\Site::cartId()])->getTotalQuantity() }}</span>
                             </button>
                             <div class="mini-cart-dropdown">
                                 <h4 class="cart-title">Your cart</h4>

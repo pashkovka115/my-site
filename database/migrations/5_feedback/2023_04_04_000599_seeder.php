@@ -1,18 +1,33 @@
 <?php
 
-namespace Database\Seeders;
-
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
 
-class CategoriesProductColumnsSeeder extends Seeder
+return new class extends Migration
 {
-    public function run(): void
+    public function up(): void
     {
-       /* $class = include 'templates/TemplateTableColumnsSeeder.php';
-        $fields = $class::template()();*/
+        $tabs = [
+            [
+                'name' => 'Общее',
+            ],
+        ];
+
+        DB::table('feedback_tabs')->insert($tabs);
+
+
+        /*$class = include base_path('database/seeders/templates/TemplateTableColumnsSeeder.php');
+        $fields = $class::template()();
+        // Всего 3 вкладки
+        foreach ($fields as $key => $field){
+            if ($field['tab_id'] > 3){
+                $fields[$key]['tab_id'] = 3;
+            }
+        }*/
+//        print_r($fields);
+
         $fields = [
             [
                 'origin_name' => 'id',
@@ -25,6 +40,16 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'tab_id' => 1,
             ],
             [
+                'origin_name' => 'email',
+                'show_name' => 'Email',
+                'sort_list' => 50,
+                'sort_single' => 10,
+                'is_show_anons' => 1,
+                'is_show_single' => 1,
+                'type' => 'email',
+                'tab_id' => 1,
+            ],
+            /*[
                 'origin_name' => 'title',
                 'show_name' => 'Заголовок окна (title)',
                 'sort_list' => 50,
@@ -32,11 +57,11 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'string',
-                'tab_id' => 5,
-            ],
+                'tab_id' => 1,
+            ],*/
             [
                 'origin_name' => 'name',
-                'show_name' => 'Название<br> (заголовок страницы)',
+                'show_name' => 'ФИО',
                 'sort_list' => 50,
                 'sort_single' => 10,
                 'is_show_anons' => 1,
@@ -44,7 +69,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'type' => 'string',
                 'tab_id' => 1,
             ],
-            [
+            /*[
                 'origin_name' => 'name_lavel',
                 'show_name' => 'Уровень заголовка',
                 'sort_list' => 50,
@@ -52,9 +77,9 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'name_lavel',
-                'tab_id' => 5,
-            ],
-            [
+                'tab_id' => 1,
+            ],*/
+            /*[
                 'origin_name' => 'slug',
                 'show_name' => 'Алиас',
                 'sort_list' => 50,
@@ -62,9 +87,9 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 1,
                 'is_show_single' => 1,
                 'type' => 'string',
-                'tab_id' => 5,
-            ],
-            [
+                'tab_id' => 1,
+            ],*/
+            /*[
                 'origin_name' => 'announce',
                 'show_name' => 'Анонс',
                 'sort_list' => 50,
@@ -73,8 +98,8 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_single' => 1,
                 'type' => 'text',
                 'tab_id' => 1,
-            ],
-            [
+            ],*/
+            /*[
                 'origin_name' => 'img_announce',
                 'show_name' => 'Изображение в анонсе',
                 'sort_list' => 50,
@@ -83,7 +108,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_single' => 1,
                 'type' => 'img',
                 'tab_id' => 1,
-            ],
+            ],*/
             [
                 'origin_name' => 'description',
                 'show_name' => 'Детальное описание',
@@ -94,7 +119,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'type' => 'text',
                 'tab_id' => 1,
             ],
-            [
+            /*[
                 'origin_name' => 'additional_fields',
                 'show_name' => 'Дополнительные поля',
                 'sort_list' => 50,
@@ -102,9 +127,9 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'additional_fields',
-                'tab_id' => 3,
-            ],
-            [
+                'tab_id' => 1,
+            ],*/
+            /*[
                 'origin_name' => 'img_detail',
                 'show_name' => 'Изображение в детальном описании',
                 'sort_list' => 50,
@@ -132,7 +157,7 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'string',
-                'tab_id' => 5,
+                'tab_id' => 1,
             ],
             [
                 'origin_name' => 'meta_description',
@@ -142,8 +167,8 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'is_show_anons' => 0,
                 'is_show_single' => 1,
                 'type' => 'text',
-                'tab_id' => 5,
-            ],
+                'tab_id' => 1,
+            ],*/
             [
                 'origin_name' => 'created_at',
                 'show_name' => 'Время создания',
@@ -164,18 +189,16 @@ class CategoriesProductColumnsSeeder extends Seeder
                 'type' => 'date',
                 'tab_id' => 1,
             ],
-            [
-                'origin_name' => 'parent_id',
-                'show_name' => 'Родительская категория',
-                'sort_list' => 10,
-                'sort_single' => 10,
-                'is_show_anons' => 0,
-                'is_show_single' => 1,
-                'type' => 'select.all_categories_but_not_self',
-                'tab_id' => 1
-            ],
         ];
 
-        DB::table('categories_product_columns')->insert($fields);
+        DB::table('feedback_columns')->insert($fields);
+
     }
-}
+
+
+    public function down(): void
+    {
+        DB::table('feedback_columns')->truncate();
+        DB::table('feedback_tabs')->truncate();
+    }
+};

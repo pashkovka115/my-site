@@ -9,7 +9,7 @@ class PageController extends SiteController
 {
     public function show($alias)
     {
-        $page_item = Page::with('properties')
+        $page_item = Page::with('options')
             ->where('is_show', true)
             ->where('slug', $alias)
             ->firstOrFail();

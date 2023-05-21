@@ -155,6 +155,9 @@ class AdminController extends Controller
         if ($request->has('mpn')) {
             $data['mpn'] = $request->input('mpn');
         }
+        if ($request->has('email')) {
+            $data['email'] = $request->input('email');
+        }
 
         return $data;
     }

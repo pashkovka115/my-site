@@ -69,7 +69,7 @@ class UserAdminController extends AdminController
             'password' => ['nullable', 'confirmed', 'min:8'],
             'avatar' => ['nullable', 'image', 'max:10240', 'dimensions:max_width=500,max_height=700'],
         ]);
-//        dd($request->all());
+
         // Check email
         $user = User::where('email', $data['email'])->firstOrFail();
 

@@ -28,6 +28,7 @@ class MetaGeneralRequest extends FormRequest
             'img_announce' => ['nullable', 'image'],
             'img_detail' => ['nullable', 'image'],
             'img_gallery.*' => ['nullable', 'image'],
+            'email' => ['nullable', 'email']
         ];
     }
 }

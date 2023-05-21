@@ -13,7 +13,7 @@ class CategoryProductsSeeder extends Seeder
 {
     public function run(Faker $faker): void
     {
-        $count = 7;
+        $count = 1;
 
         $categories = [];
         $j = 0;
@@ -24,7 +24,7 @@ class CategoryProductsSeeder extends Seeder
                 'meta_keywords' => $faker->realText($faker->numberBetween(10, 30)),
                 'meta_description' => $faker->realText($faker->numberBetween(50, 100)),
                 'name_lavel' => 'h2',
-                'name' => $name,
+                'name' => $i == 1 ? 'Разделочные доски' : $name,
                 'slug' => Str::slug($name),
                 'img_announce' => '',
                 'img_detail' => '',

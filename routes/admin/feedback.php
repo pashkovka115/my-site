@@ -12,5 +12,7 @@ Route::get('destroy/{id}', [\App\Http\Controllers\Admin\Feedback\FeedbackAdminCo
 
 Route::post('product-category-columns-update', [\App\Http\Controllers\Admin\Feedback\FeedbackColumnAdminController::class, 'update'])->name('admin.feedback.columns.update');
 
-Route::post('add-additional-field', [\App\Http\Controllers\Admin\Feedback\FeedbackAdditionalFieldsController::class, 'store'])->name('admin.feedback.additional_fields.store');
-
+Route::prefix('tab')->group(function (){
+    Route::post('store', [\App\Http\Controllers\Admin\Feedback\FeedbackTabAdminController::class, 'store'])->name('admin.feedback.tab.store');
+    Route::post('update', [\App\Http\Controllers\Admin\Feedback\FeedbackTabAdminController::class, 'update'])->name('admin.feedback.tab.update');
+});
