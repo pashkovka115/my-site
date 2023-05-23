@@ -6,6 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+	<meta name="keywords" content="@yield('meta_keywords', 'Мастерские, Смирнов')">
+	<meta name="description" content="@yield('meta_description', 'Мастерские Смирнова')">
+
+	<meta name="author" content="Мастерские Смирнова">
+
 	<title>@yield('window_title')</title>
 
 	<!--== Favicon ==-->

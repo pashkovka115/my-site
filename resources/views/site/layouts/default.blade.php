@@ -152,9 +152,9 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="page-header-content">
-                            <{{$name_lavel}}
+                            <{{$name_lavel ?? 'h2'}}
                                 class="title" data-aos="fade-down"
-                            data-aos-duration="1200">@yield('page_title')</{{$name_lavel}}>
+                            data-aos-duration="1200">@yield('page_title')</{{$name_lavel ?? 'h2'}}>
                         <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1000">
                             <ul class="breadcrumb">
                                 @foreach($breads as $link => $text)
@@ -174,6 +174,32 @@
         </div>
         <!--== End Page Header Area Wrapper ==-->
     @endif
+        @if ($errors->any())
+            <div class="alert alert-danger msg">
+                <ul class="errors">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (\Session::has('success'))
+            <div class="alert alert-success msg">
+                <ul>
+                    <li class="text-center">{!! \Session::get('success') !!}</li>
+                </ul>
+            </div>
+        @endif
+
+        <script>
+            setTimeout(function (){
+                let messages = document.querySelectorAll('.msg');
+                messages.forEach(function (el){
+                    el.style.display = 'none';
+                });
+            }, 5000);
+        </script>
 
     @yield('content')
 </main>

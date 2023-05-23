@@ -28,8 +28,8 @@ class PageAdminController extends AdminController
     public function create()
     {
         return view('admin.page.create', [
+            'tabs' => PageTabs::with('columns')->orderBy('sort')->get()->toArray(),
             'columns' => PageColumns::column_meta_sort_single(),
-            'existing_fields' => $this->getFieldsModel(Page::class),
         ]);
     }
 
@@ -44,7 +44,7 @@ class PageAdminController extends AdminController
 
     public function edit($id)
     {
-        $item = Page::with(['options', 'gallery'])->where('id', $id)->firstOrFail();
+        $item = Page::where('id', $id)->firstOrFail();
 
         return view('admin.page.edit', [
             'item' => $item,
@@ -57,22 +57,9 @@ class PageAdminController extends AdminController
     public function update(UpdatePagesRequest $request, $id)
     {
         /*
-         * Удаляем изображения из галереи
-         */
-        $this->deleteGallery($request, 'delete_gallery', PageImages::class);
-        /*
-         * Сохраняем галерею
-         */
-        $this->saveGallary($request, 'img_gallery', 'page_id', $id, PageImages::class);
-        /*
          * Обновляем сортировку
          */
         $this->updateSort($request, PageColumns::class);
-
-        /*
-         * Работа со свойствами
-         */
-//        $this->updateAdditionalFields($request, 'page_id', $id, PageAdditionalFields::class);
 
         /*
          * Работа со страницей
@@ -80,28 +67,6 @@ class PageAdminController extends AdminController
         $page = Page::where('id', $id)->firstOrFail();
 
         $data = $this->base_fields($request, self::IMAGE_PATH);
-
-        if (is_null($data['img_announce'])) {
-            unset($data['img_announce']);
-        }
-        if (is_null($data['img_detail'])) {
-            unset($data['img_detail']);
-        }
-
-        if ($request->has('delete_img_announce')) {
-            if (file_exists('storage/' . $page->img_announce)) {
-                unlink('storage/' . $page->img_announce);
-            }
-            $data['img_announce'] = '';
-        }
-
-        if ($request->has('delete_img_detail')) {
-            if (file_exists('storage/' . $page->img_detail)) {
-                unlink('storage/' . $page->img_detail);
-            }
-            $data['img_detail'] = '';
-        }
-
         $page->update($data);
 
         /*

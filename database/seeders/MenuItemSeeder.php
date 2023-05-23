@@ -22,6 +22,12 @@ class MenuItemSeeder extends Seeder
                 'name' => 'Контакты',
                 'slug' => 'contacts',
             ],
+            [ // 2
+                'parent_id' => 0,
+                'menu_id' => 1,
+                'name' => 'Доставка и оплата',
+                'slug' => 'shipping-and-payment',
+            ],
         ];
 
         \DB::table('menuitem')->insert($items);

@@ -6,6 +6,7 @@ use App\Models\CategoryProduct\CategoryProduct;
 use App\Models\Currency;
 use App\Models\Product\Attributes\Option;
 use App\Models\Product\Attributes\Property;
+use App\Traits\Models\HasThumbnail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Servises\Admin;
 use App\Servises\CurrencyConversion;
@@ -18,6 +19,7 @@ class Product extends Model
 {
     use HasFactory;
     use HasSlug;
+    use HasThumbnail;
 
     protected $table = 'products';
     protected $guarded = ['id'];
@@ -117,5 +119,15 @@ class Product extends Model
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug')
             ->doNotGenerateSlugsOnUpdate(); // Не обновлять
+    }
+
+    protected function thumbnailDir(): string
+    {
+        return 'products';
+    }
+
+    protected function thumbnaiColumn(): string
+    {
+        return 'img_detail';
     }
 }

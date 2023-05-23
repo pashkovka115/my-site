@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Language;
 use App\Models\Product\ProductColumns;
-use App\Models\Product\ProductsDescription;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;

@@ -33,6 +33,15 @@ Route::prefix('cart')->group(function (){
     Route::post('update', [\App\Http\Controllers\Site\Cart\CartController::class, 'update'])->name('site.cart.update');
 });
 
+// Изображения
+Route::prefix('storage')->group(function (){
+    Route::get('images/{dir}/{method}/{size}/{file}', [\App\Http\Controllers\Site\Image\ThumbnailController::class, 'store'])
+        ->where('method', 'resize|crop|fit')
+        ->where('size', '\d+x\d+')
+        ->where('file', '.+\.(png|jpg|jpeg|gif|bmp)$')
+        ->name('storage.thumbnail');
+});
+
 
 // ============================= ADMIN =========================================================================
 Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function () {
@@ -69,10 +78,14 @@ Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function ()
 // ============================= END ADMIN =========================================================================
 
 // Сохранение сообщений со страницы контактов
-Route::post('feedback/store', [\App\Http\Controllers\Site\FeedbackAdminController::class, 'store'])->name('site.feedback.store');
+Route::post('feedback/store', [\App\Http\Controllers\Site\FeedbackController::class, 'store'])->name('site.feedback.store');
 
+
+Route::prefix('contacts')->group(function () {
+    Route::get('', [\App\Http\Controllers\Site\Contact\ContactController::class, 'show'])->name('site.contact');
+});
 
 // default
 Route::prefix('{alias}')->group(function () {
-    Route::get('', [\App\Http\Controllers\Site\PageController::class, 'show'])->name('site.page');
+    Route::get('', [\App\Http\Controllers\Site\Page\PageController::class, 'show'])->name('site.page');
 });

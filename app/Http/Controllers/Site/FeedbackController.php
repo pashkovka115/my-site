@@ -6,7 +6,7 @@ use App\Http\Controllers\SiteController;
 use App\Models\Feedback\Feedback;
 use Illuminate\Http\Request;
 
-class FeedbackAdminController extends SiteController
+class FeedbackController extends SiteController
 {
     public function store(Request $request)
     {
@@ -20,14 +20,14 @@ class FeedbackAdminController extends SiteController
             $message = new Feedback($data);
             $res = $message->save();
 
-            if ($res) {
+            /*if ($res) {
                 return 'Сообщение сохранено';
-            }
+            }*/
         } catch (\Exception $e) {
             return 'Ошибка передачи данных. Попробуйте обновить страницу и отправить сообщение ещё раз. ( '
                 . $e->getMessage() . ' )';
         }
 
-        return '';
+        return back()->with('success', 'Сообщение сохранено.');
     }
 }

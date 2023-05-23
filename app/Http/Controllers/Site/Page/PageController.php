@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Site\Page;
 
 use App\Http\Controllers\SiteController;
 use App\Models\Page\Page;
@@ -9,11 +9,10 @@ class PageController extends SiteController
 {
     public function show($alias)
     {
-        $page_item = Page::with('options')
-            ->where('is_show', true)
+        $item = Page::where('is_show', true)
             ->where('slug', $alias)
             ->firstOrFail();
 
-        return view('site.page.show', compact('page_item'));
+        return view('site.page.show', compact('item'));
     }
 }

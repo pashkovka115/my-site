@@ -1,5 +1,10 @@
 @extends('site.layouts.default')
 
+@section('window_title'){{ $item->title }}@endsection
+@section('meta_keywords'){{ $item->meta_keywords }}@endsection
+@section('meta_description'){{ $item->meta_description }}@endsection
+@section('page_title'){{ $item->name }}@endsection
+
 @section('content')
 	<section class="product-area product-single-area">
 		<div class="container">
@@ -57,7 +62,8 @@
 									<div class="swiper-container single-product-nav-slider product-nav">
 										<div class="swiper-wrapper">
 											<div class="swiper-slide">
-												<img src="{{ asset('assets/site/img/shop/product-single/nav1.jpg') }}" alt="Image-HasTech">
+												<img src="{{ $item->makeThumbnail('160x160') }}" alt="Image-HasTech">
+{{--												<img src="{{ asset('assets/site/img/shop/product-single/nav1.jpg') }}" alt="Image-HasTech">--}}
 											</div>
 											<div class="swiper-slide">
 												<img src="{{ asset('assets/site/img/shop/product-single/nav2.jpg') }}" alt="Image-HasTech">
@@ -83,11 +89,11 @@
 							<div class="col-lg-6">
 								<!--== Start Product Info Area ==-->
 								<div class="product-single-info">
-									<h4 class="title">{{ $product->name }}</h4>
+									<{{ $item->name_lavel }} class="title">{{ $item->name }}</{{ $item->name_lavel }}>
 									<div class="prices">
-										<span class="price">{{ $product->price }}</span>
-										@if($product->old_price)
-										<span class="price-old">{{ $product->old_price }}</span>
+										<span class="price">{{ $item->price }}</span>
+										@if($item->old_price)
+										<span class="price-old">{{ $item->old_price }}</span>
 										@endif
 									</div>
 									<div class="star-content">
@@ -97,7 +103,7 @@
 										<i class="fa fa-star-o"></i>
 										<i class="fa fa-star-o"></i>
 									</div>
-									{!! $product->announce !!}
+									{!! $item->announce !!}
 									<div class="product-select-action">
 										<div class="select-item">
 											<div class="select-size-wrap">
@@ -190,7 +196,7 @@
 									<div class="tab-content product-tab-content" id="ReviewTabContent">
 										<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
 											<div class="product-description">
-												{!! $product->description !!}
+												{!! $item->description !!}
 											</div>
 										</div>
 										<div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
