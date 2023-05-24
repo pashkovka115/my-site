@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        View::share('global_columns', ProductColumns::column_meta_sort_single());
+//        View::share('global_columns', ProductColumns::column_meta_sort_single());
     }
 
     /**

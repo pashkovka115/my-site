@@ -7,9 +7,6 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
@@ -23,9 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrenciesSeeder::class);
 
         $this->call(CategoryProductsSeeder::class);
-        $this->call(CategoriesProductTabsSeeder::class);
-        $this->call(CategoriesProductColumnsSeeder::class);
-        $this->call(CategoriesProductAdditionalFieldsSeeder::class);
 
         $this->call(ProductsSeeder::class);
         $this->call(ProductsAdditionalFieldsSeeder::class);

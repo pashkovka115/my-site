@@ -27,6 +27,10 @@ Route::prefix('product')->group(function (){
     Route::get('{slug}', [\App\Http\Controllers\Site\Product\ProductController::class, 'show'])->name('site.product.show');
 });
 
+Route::prefix('category')->group(function (){
+    Route::get('{slug}', [\App\Http\Controllers\Site\CategoryProduct\CategoryProductController::class, 'index'])->name('site.category.show');
+});
+
 Route::prefix('cart')->group(function (){
     Route::get('', [\App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('site.cart');
     Route::post('ajax/add', [\App\Http\Controllers\Site\Cart\CartController::class, 'store'])->name('site.cart.ajax.add');

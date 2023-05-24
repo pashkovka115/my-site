@@ -24,6 +24,7 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = ['id'];
 
+    // todo: Удалить
     public function additionalFields()
     {
         return $this->hasMany(ProductAdditionalFields::class, 'product_id', 'id');
@@ -35,6 +36,7 @@ class Product extends Model
     }
 
 
+    // todo: Удалить
     public function properties()
     {
         return $this->hasMany(
@@ -53,32 +55,6 @@ class Product extends Model
     {
         return $this->hasMany(ProductImages::class)->orderBy('sort');
     }
-
-
-    /*private static function currency()
-    {
-        if (session('originCurrency') == null){
-            $originCurrency = Currency::where('base', true)->first();
-            session()->put('originCurrency', $originCurrency);
-        }else{
-            $originCurrency = session('originCurrency');
-        }
-
-        if ($originCurrency) {
-            $targetCurrencyCode = session('currency', $originCurrency->code);
-            if ($targetCurrencyCode){
-                if (session('currentCurrency') == null){
-                    $currentCurrency = Currency::where('code', $targetCurrencyCode)->first();
-                    session()->put('currentCurrency', $currentCurrency);
-                }else{
-                    $currentCurrency = session('currentCurrency');
-                }
-                return $currentCurrency;
-            }
-        }
-        return false;
-    }*/
-
 
     /* Start Fields */
 
@@ -124,10 +100,5 @@ class Product extends Model
     protected function thumbnailDir(): string
     {
         return 'products';
-    }
-
-    protected function thumbnaiColumn(): string
-    {
-        return 'img_detail';
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CategoryProduct\CategoryProduct;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -9,6 +10,8 @@ class MenuItemSeeder extends Seeder
 {
     public function run(): void
     {
+        $cat = CategoryProduct::first();
+
         $items = [
             [ // 1
                 'parent_id' => 0,
@@ -16,13 +19,19 @@ class MenuItemSeeder extends Seeder
                 'name' => 'Главная',
                 'slug' => '/',
             ],
-            [ // 2
+            /*[ // 2
+                'parent_id' => 0,
+                'menu_id' => 1,
+                'name' => $cat->name,
+                'slug' => '/category/' . $cat->slug,
+            ],*/
+            [ // 3
                 'parent_id' => 0,
                 'menu_id' => 1,
                 'name' => 'Контакты',
                 'slug' => 'contacts',
             ],
-            [ // 2
+            [ // 4
                 'parent_id' => 0,
                 'menu_id' => 1,
                 'name' => 'Доставка и оплата',

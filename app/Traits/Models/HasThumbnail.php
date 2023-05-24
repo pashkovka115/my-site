@@ -8,16 +8,14 @@ trait HasThumbnail
 {
     abstract protected function thumbnailDir(): string;
 
-    public function makeThumbnail(string $size, string $method = 'resize'): string
+    public function makeThumbnailFrom(string $path, string $size, string $method = 'resize'): string
     {
-//        dd(File::basename($this->{$this->thumbnaiColumn()}));
-
         return route('storage.thumbnail', [
             'size' => $size,
             'dir' => $this->thumbnailDir(),
             'method' => $method,
-            'file' => $this->{$this->thumbnaiColumn()}
-//            'file' => File::basename($this->{$this->thumbnaiColumn()})
+            'file' => $path
+//            'file' => $this->{$this->thumbnaiColumn()}
         ]);
     }
 

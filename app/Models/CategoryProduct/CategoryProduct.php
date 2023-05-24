@@ -23,15 +23,9 @@ class CategoryProduct extends Model
             ->orderBy('sort');
     }
 
-
-    public function additionalFields()
-    {
-        return $this->hasMany(CategoryProductAdditionalFields::class, 'category_id');
-    }
-
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'category_id');
     }
 
 
