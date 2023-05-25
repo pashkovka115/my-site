@@ -11,28 +11,21 @@ class ProductAttrOptionValueSeeder extends Seeder
 {
     public function run(Faker $faker): void
     {
-        $values = [];
-
-        for ($i = 1; $i <= 15; $i++){
-            $option_id = Option::query()->inRandomOrder()->value('id');
-            $values[] = [
-                'name' => "Значение $i опции $option_id",
-                'option_id' => $option_id
-            ];
-        }
+        $values = [
+            [
+                'name' => "Ясень",
+                'option_id' => 1
+            ],
+            [
+                'name' => "Дуб",
+                'option_id' => 1
+            ],
+            [
+                'name' => "Абрикос",
+                'option_id' => 1
+            ],
+        ];
 
         \DB::table('product_attr_values')->insert($values);
-
-
-        /*$pivot = [];
-
-        for ($i = 1; $i <= 10; $i++){
-            $pivot[] = [
-                'product_id' => random_int(1, 2),
-                'option_value_id' => Value::query()->inRandomOrder()->value('id')
-            ];
-        }
-
-        \DB::table('product_attr_option_value_product')->insert($pivot);*/
     }
 }

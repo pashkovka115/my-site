@@ -24,7 +24,9 @@
                 @foreach($columns as $column)
                   @if($column['is_show_anons'])
                     <td>
+                        @if(isset($item->is_admin_viewed) and !$item->is_admin_viewed) <b> @endif
 											{!! $item->{$column['origin_name']} !!}
+                            @if(isset($item->is_admin_viewed) and !$item->is_admin_viewed) </b> @endif
                     </td>
                   @endif
                 @endforeach

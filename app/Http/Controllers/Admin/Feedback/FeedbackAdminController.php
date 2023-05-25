@@ -18,7 +18,7 @@ class FeedbackAdminController extends AdminController
     {
         return view('admin.feedback.index', [
             'columns' => FeedbackColumns::column_meta_sort_list(),
-            'items' => Feedback::paginate()
+            'items' => Feedback::orderBy('is_admin_viewed')->paginate()
         ]);
     }
 
@@ -39,9 +39,11 @@ class FeedbackAdminController extends AdminController
         return $this->redirectAdmin($request, 'feedback', $feedback->id);
     }
 
-
+// Feedback::where('is_admin_viewed', 0)->count()
     public function edit($id)
     {
+        \DB::table('feedback')->where('id', $id)->increment('is_admin_viewed');
+
         return view('admin.feedback.edit', [
             'item' => Feedback::where('id', $id)->firstOrFail(),
             'existing_fields' => $this->getFieldsModel(Feedback::class),

@@ -24,6 +24,8 @@ return new class extends Migration
             $table->integer('sort')->default(0);
             $table->longText('description')->nullable();
 
+            $table->unsignedInteger('is_admin_viewed')->default(0);
+
             $table->timestamps();
 
 

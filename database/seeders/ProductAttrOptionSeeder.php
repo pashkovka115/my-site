@@ -9,14 +9,12 @@ class ProductAttrOptionSeeder extends Seeder
 {
     public function run(Faker $faker): void
     {
-        $options = [];
-
-        for ($i = 1; $i <= 6; $i++){
-            $options[] = [
-                'product_id' => random_int(1, 2),
-                'name' => "Опция $i",
-            ];
-        }
+        $options = [
+            [
+                'product_id' => 1,
+                'name' => "Материал",
+            ],
+        ];
 
         \DB::table('product_attr_options')->insert($options);
     }

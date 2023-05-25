@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Feedback\Feedback;
+use App\Servises\Admin;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -24,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::defaultView('vendor.pagination.my_site');
+
+        View::share('count_messages_not_viewed', Feedback::where('is_admin_viewed', 0)->count());
 
         require base_path('app/Servises/functions.php');
 

@@ -46,8 +46,15 @@
                 </a>
                 <div id="navAuthentication" class="collapse {{ active(['admin.feedback*', 'admin.page*'], 'show') }}" data-bs-parent="#sideNavbar">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link {{ active('admin.feedback*') }}" href="{{route('admin.feedback')}}">Сообщения</a>
+                        <li class="nav-item position-relative">
+                            <a class="nav-link {{ active('admin.feedback*') }}" href="{{route('admin.feedback')}}">Сообщения
+                                @if($count_messages_not_viewed)
+                                <span class="position-absolute top-50 end-2 translate-middle badge rounded-pill bg-danger">
+                                    {{ $count_messages_not_viewed }}
+                                    <span class="visually-hidden">unread messages</span>
+                                  </span>
+                                @endif
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ active('admin.page*') }}" href="{{route('admin.page')}}">Страницы</a>

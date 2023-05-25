@@ -23,7 +23,7 @@ class LoginAdminController extends AdminController
         ]);
 
         if (auth()->attempt($request->only(['email', 'password']), $request->boolean('remember'))){
-            return redirect()->intended('site.home'); // редирект куда собирался до авторизации
+            return redirect()->intended(route('site.home')); // редирект куда собирался до авторизации
         }
 
         $request->session()->regenerate();

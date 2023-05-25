@@ -68,7 +68,12 @@
                             <ul class="user-dropdown">
                                 <li class="user">
                                     <ul>
-                                        <li><a href="#/">Login</a></li>
+                                        @guest
+                                        <li><a href="{{ route('login') }}">Войти</a></li>
+                                        @endguest
+                                        @auth
+                                        <li><a href="{{ route('logout') }}">Выйти</a></li>
+                                        @endauth
                                     </ul>
                                 </li>
                             </ul>
@@ -92,7 +97,9 @@
                         <div class="header-mini-cart">
                             <button class="mini-cart-toggle">
                                 <i class="icon bardy bardy-shopping-cart"></i>
+                                @isset($_COOKIE[\App\Servises\Site::cartId()])
                                 <span class="number">{{ \Cart::session($_COOKIE[\App\Servises\Site::cartId()])->getTotalQuantity() }}</span>
+                                @endisset
                             </button>
                             <div class="mini-cart-dropdown">
                                 <h4 class="cart-title">Your cart</h4>
@@ -143,6 +150,8 @@
     </div>
 </header>
 <!--== End Header Wrapper ==-->
+
+@include('site.parts.javascript_message')
 
 <main class="main-content">
     @if($__env->yieldContent('breadcrumbs'))

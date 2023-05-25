@@ -19,6 +19,5 @@ class General extends Model
     public static function column_meta_sort_single()
     {
         return static::orderBy('sort_single')->get()->toArray();
-//        return static::with('additionalFields')->orderBy('sort_single')->get()->toArray();
     }
 }

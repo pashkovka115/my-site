@@ -10,7 +10,7 @@ class MenuItemSeeder extends Seeder
 {
     public function run(): void
     {
-        $cat = CategoryProduct::first();
+//        $cat = CategoryProduct::first();
 
         $items = [
             [ // 1
@@ -29,13 +29,13 @@ class MenuItemSeeder extends Seeder
                 'parent_id' => 0,
                 'menu_id' => 1,
                 'name' => 'Контакты',
-                'slug' => 'contacts',
+                'slug' => '/contacts',
             ],
             [ // 4
                 'parent_id' => 0,
                 'menu_id' => 1,
                 'name' => 'Доставка и оплата',
-                'slug' => 'shipping-and-payment',
+                'slug' => '/shipping-and-payment',
             ],
         ];
 
