@@ -47,12 +47,12 @@
                                     <i class="hover-icon bardy bardy-shopping-cart"></i>
                                   </span>
                                 </a>
-                                <a class="add-wishlist" href="wishlist.html">
+                                {{--<a class="add-wishlist" href="wishlist.html">
                                   <span class="icon">
                                     <i class="bardy bardy-wishlist"></i>
                                     <i class="hover-icon bardy bardy-wishlist"></i>
                                   </span>
-                                </a>
+                                </a>--}}
                                 <a class="add-quick-view" href="#" onclick="showProductModal({{ $product->id }})">
                                   <span class="icon">
                                     <i class="bardy bardy-quick-view"></i>
@@ -146,12 +146,12 @@
                                     </span>
                                   </a>
                                   {{--	todo: wishlist.html	--}}
-                                  <a class="add-wishlist" href="wishlist.html">
+                                  {{--<a class="add-wishlist" href="wishlist.html">
                                     <span class="icon">
                                       <i class="bardy bardy-wishlist"></i>
                                       <i class="hover-icon bardy bardy-wishlist"></i>
                                     </span>
-                                  </a>
+                                  </a>--}}
                                   <a class="add-quick-view" href="#" onclick="showProductModal({{ $product->id }})">
                                     <span class="icon">
                                       <i class="bardy bardy-quick-view"></i>
@@ -208,11 +208,11 @@
                 </div>
                 {!! $product->description !!}
 
-                  <div class="product-select-action">
+                  <div class="product-select-action mt-3">
                       @foreach($product->options as $option)
                           <div class="select-item">
-                              <div class="select-size-wrap">
-                                  <b>{{ $option->name }} :</b>
+                              <div class="select-size-wrap d-flex flex-wrap">
+                                  <b style="margin-right: 10px">{{ $option->name }} :</b>
                                   @if($option->values->count())
                                       <ul style="display: flex; justify-content: center;">
                                           @foreach($option->values as $value)

@@ -80,20 +80,6 @@
                         </li>
                     </ul>
                     <div class="header-action">
-                        <div class="header-search">
-                            <button class="search-toggle">
-                                <i class="search-icon bardy bardy-search"></i>
-                                <i class="close-icon bardy bardy-cancel"></i>
-                            </button>
-                            <div class="header-search-form">
-                                <form action="#">
-                                    <input type="search" placeholder="Search our store">
-                                    <button type="submit"><i class="bardy bardy-search"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="header-action">
                         <div class="header-mini-cart">
                             <button class="mini-cart-toggle">
                                 <i class="icon bardy bardy-shopping-cart"></i>

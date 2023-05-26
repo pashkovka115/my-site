@@ -27,7 +27,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('vendor.pagination.my_site');
 
-        View::share('count_messages_not_viewed', Feedback::where('is_admin_viewed', 0)->count());
+        if (php_sapi_name() != 'cli') {
+            View::share('count_messages_not_viewed', Feedback::where('is_admin_viewed', 0)->count());
+        }
 
         require base_path('app/Servises/functions.php');
 
@@ -35,10 +37,10 @@ class AppServiceProvider extends ServiceProvider
             'database/migrations/1_base',
             'database/migrations/2_categories_product',
             'database/migrations/3_products',
-            'database/migrations/4_reviews',
             'database/migrations/5_feedback',
             'database/migrations/6_pages',
             'database/migrations/7_menu',
+            'database/migrations/9_order',
         ]);
     }
 }

@@ -89,6 +89,13 @@ Route::prefix('contacts')->group(function () {
     Route::get('', [\App\Http\Controllers\Site\Contact\ContactController::class, 'show'])->name('site.contact');
 });
 
+// Sitemaps
+Route::prefix('sitemap')->group(function (){
+    // Главная
+    Route::get('', [\App\Http\Controllers\Admin\Sitemap\SitemapController::class, 'index'])->name('sitemap.index');
+    Route::get('products', [\App\Http\Controllers\Admin\Sitemap\SitemapController::class, 'products'])->name('sitemap.products');
+});
+
 // default
 Route::prefix('{alias}')->group(function () {
     Route::get('', [\App\Http\Controllers\Site\Page\PageController::class, 'show'])->name('site.page');

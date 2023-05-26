@@ -36,7 +36,6 @@ return new class extends Migration
             $table->unsignedSmallInteger('min_quantity')->nullable()->default(0);
 
             $table->boolean('hit')->default(0);
-            $table->boolean('is_download')->default(0);
 
             $table->unsignedInteger('width')->nullable()->default(0);
             $table->unsignedInteger('height')->nullable()->default(0);

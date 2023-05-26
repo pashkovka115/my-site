@@ -35,8 +35,6 @@ return new class extends Migration
         DB::table('products_tabs')->insert($tabs);
 
 
-//        $class = include base_path('database/seeders/templates/TemplateTableColumnsSeeder.php');
-//        $fields = $class::template()();
         $fields = [
             [
                 'origin_name' => 'id',
@@ -139,7 +137,7 @@ return new class extends Migration
             ],
             [
                 'origin_name' => 'img_detail',
-                'show_name' => 'Изображение в детальном описании 800x800',
+                'show_name' => 'Изображение в детальном описании<br>и в модальном на главной 800x800',
                 'sort_list' => 50,
                 'sort_single' => 80,
                 'is_show_anons' => 0,
@@ -422,17 +420,6 @@ return new class extends Migration
             'is_show_anons' => 0,
             'is_show_single' => 1,
             'type' => 'hit',
-            'tab_id' => 1,
-            'description' => '',
-        ];
-        $fields[] = [
-            'origin_name' => 'is_download',
-            'show_name' => 'Цифровой товар',
-            'sort_list' => 10,
-            'sort_single' => 10,
-            'is_show_anons' => 0,
-            'is_show_single' => 1,
-            'type' => 'is_download',
             'tab_id' => 1,
             'description' => '',
         ];
