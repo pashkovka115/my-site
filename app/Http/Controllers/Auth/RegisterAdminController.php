@@ -13,7 +13,8 @@ class RegisterAdminController extends AdminController
 {
     public function register()
     {
-        return view('auth.register');
+        return redirect()->route('site.home');
+//        return view('auth.register');
     }
 
 

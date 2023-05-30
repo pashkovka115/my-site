@@ -10,7 +10,12 @@ class ProductController extends Controller
 {
     public function index()
     {
-        //
+        $items = Product::with(['options'])
+            ->where('is_show', true)
+            ->orderBy('sort')
+            ->paginate();
+
+        return view('site.product.index', compact('items'));
     }
 
 

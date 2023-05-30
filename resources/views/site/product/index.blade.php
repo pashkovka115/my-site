@@ -25,22 +25,22 @@
               <div class="tab-pane fade" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                 <div class="row">
 
-                  @foreach($products as $product)
+                  @foreach($items as $item)
                     <div class="col-sm-6 col-lg-4 col-xl-4">
                       <!--== Start Shop Item ==-->
                       <div class="product-item">
                         <div class="inner-content">
                           <div class="product-thumb">
-                            @if($product->img_announce)
-                              <a href="{{ route('site.product.show', ['slug' => $product->slug]) }}">
-                                <img class="w-100" src="{{ 'storage/' . $product->img_announce }}" alt="{{ $product->name }}">
+                            @if($item->img_announce)
+                              <a href="{{ route('site.product.show', ['slug' => $item->slug]) }}">
+                                <img class="w-100" src="{{ 'storage/' . $item->img_announce }}" alt="{{ $item->name }}">
                               </a>
                             @endif
                             <div class="product-action">
                               <div class="addto-wrap">
                                 <a class="add-cart"
                                    href="#"
-                                   data-id="{{ $product->id }}"
+                                   data-id="{{ $item->id }}"
                                 >
                                   <span class="icon">
                                     <i class="bardy bardy-shopping-cart"></i>
@@ -53,7 +53,7 @@
                                     <i class="hover-icon bardy bardy-wishlist"></i>
                                   </span>
                                 </a>--}}
-                                <a class="add-quick-view" href="#" onclick="showProductModal({{ $product->id }})">
+                                <a class="add-quick-view" href="#" onclick="showProductModal({{ $item->id }})">
                                   <span class="icon">
                                     <i class="bardy bardy-quick-view"></i>
                                     <i class="hover-icon bardy bardy-quick-view"></i>
@@ -68,7 +68,7 @@
                             <div class="product-info">
                               <h4 class="title">
                                 <a
-                                  href="{{ route('site.product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                  href="{{ route('site.product.show', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
                               </h4>
                               {{-- todo: Рейтинг
                               <div class="star-content">
@@ -79,9 +79,9 @@
                                 <i class="fa fa-star-o"></i>
                               </div>--}}
                               <div class="prices">
-                                <span class="price">{{ $product->price }}</span>
-                                @if($product->old_price)
-                                  <span class="price-old">{{ $product->old_price }}</span>
+                                <span class="price">{{ $item->price }}</span>
+                                @if($item->old_price)
+                                  <span class="price-old">{{ $item->old_price }}</span>
                                 @endif
                               </div>
                             </div>
@@ -94,20 +94,20 @@
 
                 </div>
                 <!--== Start Pagination Wrap ==-->
-                {{ $products->links() }}
+                {{ $items->links() }}
                 <!--== End Pagination Wrap ==-->
               </div>
               <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
                 <div class="row">
-                  @foreach($products as $product)
+                  @foreach($items as $item)
                     <div class="col-12">
                       <!--== Start Shop Item ==-->
                       <div class="product-item product-item-list">
                         <div class="inner-content">
                           <div class="product-thumb">
-                            @if($product->img_announce)
-                              <a href="{{ route('site.product.show', ['slug' => $product->slug]) }}">
-                                <img class="w-100" src="{{ 'storage/' . $product->img_announce }}" alt="{{ $product->name }}">
+                            @if($item->img_announce)
+                              <a href="{{ route('site.product.show', ['slug' => $item->slug]) }}">
+                                <img class="w-100" src="{{ 'storage/' . $item->img_announce }}" alt="{{ $item->name }}">
                               </a>
                             @endif
                             {{-- todo: Акция
@@ -117,7 +117,7 @@
                             <div class="product-info">
                               <h4 class="title">
                                 <a
-                                  href="{{ route('site.product.show', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                                  href="{{ route('site.product.show', ['slug' => $item->slug]) }}">{{ $item->name }}</a>
                               </h4>
                               {{-- todo: Рейтинг
                               <div class="star-content">
@@ -128,17 +128,17 @@
                                 <i class="fa fa-star-o"></i>
                               </div>--}}
                               <div class="prices">
-                                <span class="price">{{ $product->price }}</span>
-                                @if($product->old_price)
-                                  <span class="price-old">{{ $product->old_price }}</span>
+                                <span class="price">{{ $item->price }}</span>
+                                @if($item->old_price)
+                                  <span class="price-old">{{ $item->old_price }}</span>
                                 @endif
                               </div>
-                              {!! $product->announce !!}
+                              {!! $item->announce !!}
                               <div class="product-action">
                                 <div class="addto-wrap">
                                   <a class="add-cart"
                                      href="#"
-                                     data-id="{{ $product->id }}"
+                                     data-id="{{ $item->id }}"
                                   >
                                     <span class="icon">
                                       <i class="bardy bardy-shopping-cart"></i>
@@ -152,7 +152,7 @@
                                       <i class="hover-icon bardy bardy-wishlist"></i>
                                     </span>
                                   </a>--}}
-                                  <a class="add-quick-view" href="#" onclick="showProductModal({{ $product->id }})">
+                                  <a class="add-quick-view" href="#" onclick="showProductModal({{ $item->id }})">
                                     <span class="icon">
                                       <i class="bardy bardy-quick-view"></i>
                                       <i class="hover-icon bardy bardy-quick-view"></i>
@@ -169,7 +169,7 @@
                   @endforeach
                 </div>
                 <!--== Start Pagination Wrap ==-->
-                {{ $products->links() }}
+                {{ $items->links() }}
                 <!--== End Pagination Wrap ==-->
               </div>
             </div>
@@ -182,8 +182,8 @@
 @endsection
 
 @section('modals')
-  @foreach($products as $product)
-    <aside class="product-quick-view-modal" data-product_id="{{ $product->id }}">
+  @foreach($items as $item)
+    <aside class="product-quick-view-modal" data-product_id="{{ $item->id }}">
       <div class="product-quick-view-inner">
         <div class="product-quick-view-content">
           <button type="button" class="btn-close">
@@ -192,24 +192,24 @@
           <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
               <div class="thumb">
-                @if($product->img_detail)
-                  <img src="{{ asset('storage/' . $product->img_detail) }}" alt="{{ $product->name }}">
+                @if($item->img_detail)
+                  <img src="{{ asset('storage/' . $item->img_detail) }}" alt="{{ $item->name }}">
                 @endif
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-12">
               <div class="content">
-                <h4 class="title">{{ $product->name }}</h4>
+                <h4 class="title">{{ $item->name }}</h4>
                 <div class="prices">
-                  @if($product->old_price)
-                    <del class="price-old">{{ $product->old_price }}</del>
+                  @if($item->old_price)
+                    <del class="price-old">{{ $item->old_price }}</del>
                   @endif
-                  <span class="price">{{ $product->price }}</span>
+                  <span class="price">{{ $item->price }}</span>
                 </div>
-                {!! $product->description !!}
+                {!! $item->description !!}
 
                   <div class="product-select-action mt-3">
-                      @foreach($product->options as $option)
+                      @foreach($item->options as $option)
                           <div class="select-item">
                               <div class="select-size-wrap d-flex flex-wrap">
                                   <b style="margin-right: 10px">{{ $option->name }} :</b>
@@ -230,7 +230,7 @@
                   </div>
                   <a href="#"
                      class="btn btn-black add-cart"
-                     data-id="{{ $product->id }}"
+                     data-id="{{ $item->id }}"
                   >В корзину</a>
                 </div>
               </div>
@@ -250,7 +250,6 @@
       $('.add-cart').on('click', function (e) {
           e.preventDefault();
           const $this = $(this);
-          $this.hide();
           const id = $this.data('id');
           let qty = $this.prev().find('input[id^=quantity]').val() ? $this.prev().find('input[id^=quantity]').val() : 1;
           qty = parseInt(qty);
@@ -263,7 +262,6 @@
                   'X-CSRF-TOKEN': '{{ csrf_token() }}'
               },
               success: function (res) {
-                  $this.show();
                   let number = parseInt($('button.mini-cart-toggle span.number').text());
                   $('button.mini-cart-toggle span.number').text(number + qty);
 
@@ -283,11 +281,9 @@
                   console.log(res)
               },
               error: function (res) {
-                  $this.show();
                   console.log(res);
               }
           });
-          return false;
       });
 
 
@@ -301,7 +297,6 @@
               popupProduct.removeClass('active');
               $("body").removeClass("fix");
           });
-          return false;
       }
 
       // Remember view style (grid or list)

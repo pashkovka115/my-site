@@ -1,7 +1,7 @@
 @extends('site.layouts.default')
 
 @section('window_title')
-    {{ $item->title }}
+    {{ $item->title ?? $item->name }}
 @endsection
 
 @section('meta_keywords')
@@ -35,7 +35,7 @@
                                                                 <a class="lightbox-image" data-fancybox="gallery"
                                                                    href="{{ asset('/storage/'.$img->src) }}">
                                                                     <img src="{{ asset('/storage/'.$img->src) }}"
-                                                                         alt="Image-HasTech">
+                                                                         alt="{{ $item->name }}">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -52,7 +52,7 @@
                                             @foreach($item->gallery as $img)
                                                 <div class="swiper-slide">
                                                     <img src="{{ $item->makeThumbnailFrom($img->src, '160x160') }}"
-                                                         alt="Image-HasTech">
+                                                         alt="{{ $item->name }}_{{ $loop->iteration }}">
                                                 </div>
                                             @endforeach
                                         </div>

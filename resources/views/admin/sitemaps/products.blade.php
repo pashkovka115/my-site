@@ -6,8 +6,6 @@
             <url>
                 <loc>{{ route('site.product.show', ['slug' => $product->slug]) }}</loc>
                 <lastmod>{{ $product->updated_at->tz('GMT')->toAtomString() }}</lastmod>
-                <changefreq>monthly</changefreq>
-                <priority>0.9</priority>
             </url>
         @endif
     @endforeach
