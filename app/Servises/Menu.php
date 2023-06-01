@@ -10,6 +10,6 @@ class Menu
             ->where('name', $name)
             ->firstOrFail();
 
-        return view('site.mycomponents.menu', compact('menu'));
+        return view('site.mycomponents.top_menu.menu', compact('menu'));
     }
 }

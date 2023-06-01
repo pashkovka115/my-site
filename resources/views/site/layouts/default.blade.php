@@ -32,8 +32,8 @@
             <div class="col">
                 <div class="header-logo-area">
                     <a href="{{ route('site.home') }}">
-                        <img class="logo-main" src=" <?= asset('assets/site') ?>/img/logo.png" alt="Logo"/>
-                        <img class="logo d-none" src=" <?= asset('assets/site') ?>/img/logo-light.png" alt="Logo"/>
+                        <img class="logo-main" src=" <?= asset('assets/site') ?>/img/logo.png" alt="Логотип: Мастерские Смирнова"/>
+                        <img class="logo d-none" src=" <?= asset('assets/site') ?>/img/logo-light.png" alt="Логотип: Мастерские Смирнова"/>
                     </a>
                 </div>
             </div>
