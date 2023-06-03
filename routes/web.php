@@ -36,6 +36,7 @@ Route::prefix('cart')->group(function (){
     Route::get('', [\App\Http\Controllers\Site\Cart\CartController::class, 'index'])->name('site.cart');
     Route::post('ajax/add', [\App\Http\Controllers\Site\Cart\CartController::class, 'store'])->name('site.cart.ajax.add');
     Route::post('update', [\App\Http\Controllers\Site\Cart\CartController::class, 'update'])->name('site.cart.update');
+    Route::get('checkout', [\App\Http\Controllers\Site\Cart\CheckoutController::class, 'index'])->name('site.cart.checkout');
 });
 
 // Изображения

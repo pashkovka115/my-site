@@ -121,7 +121,7 @@
                                     <h4>Subtotal: <span class="total">Tk 130.00</span></h4>
                                     <div class="cart-btn">
                                         <a href="{{ route('site.cart') }}">Корзина</a>
-                                        <a href="shop-checkout.html">Checkout</a>
+                                        <a href="{{ route('site.cart.checkout') }}">Оформить</a>
                                     </div>
                                 </div>
                             </div>

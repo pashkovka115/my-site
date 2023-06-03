@@ -104,12 +104,13 @@
                           </tbody>
                         </table>
                         <div class="proceed-to-checkout">
-                          <form action="" method="post">
+                          {{--<form action="" method="post">
                             @csrf
                             <input type="hidden" name="total_qty" value="{{ $total_quantity }}">
                             <input type="hidden" name="total_sum" value="{{ $total_sum }}">
                             <button type="submit" class="shop-checkout-button">Перейти к оформлению заказа</button>
-                          </form>
+                          </form>--}}
+                          <a href="{{ route('cart.checkout') }}" class="shop-checkout-button">Перейти к оформлению заказа</a>
                         </div>
                       </div>
                     </div>
