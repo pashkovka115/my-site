@@ -21,7 +21,8 @@
               </ul>
             </div>
           </div>--}}
-          <form>
+          <form action="{{ route('site.order.store') }}" method="post">
+            @csrf
           <div class="edit-checkout-information">
             <h4 class="title">Покупатель</h4>
             @guest

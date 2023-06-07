@@ -39,6 +39,10 @@ Route::prefix('cart')->group(function (){
     Route::get('checkout', [\App\Http\Controllers\Site\Cart\CheckoutController::class, 'index'])->name('site.cart.checkout');
 });
 
+Route::prefix('order')->group(function (){
+    Route::post('store', [\App\Http\Controllers\Site\Order\OrderController::class, 'store'])->name('site.order.store');
+});
+
 // Изображения
 Route::prefix('storage')->group(function (){
     Route::get('images/{dir}/{method}/{size}/{file}', [\App\Http\Controllers\Site\Image\ThumbnailController::class, 'store'])

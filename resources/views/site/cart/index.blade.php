@@ -110,7 +110,7 @@
                             <input type="hidden" name="total_sum" value="{{ $total_sum }}">
                             <button type="submit" class="shop-checkout-button">Перейти к оформлению заказа</button>
                           </form>--}}
-                          <a href="{{ route('cart.checkout') }}" class="shop-checkout-button">Перейти к оформлению заказа</a>
+                          <a href="{{ route('site.cart.checkout') }}" class="shop-checkout-button">Перейти к оформлению заказа</a>
                         </div>
                       </div>
                     </div>
