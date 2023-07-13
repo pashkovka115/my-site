@@ -76,6 +76,26 @@
                 </a>
             </li>
 
+            <!-- Nav item -->
+            <li class="nav-item">
+                <a class="nav-link has-arrow " href="#!" data-bs-toggle="collapse" data-bs-target="#navPermission" aria-expanded="false" aria-controls="navPermission">
+                    <i data-feather="lock" class="nav-icon icon-xs me-2"></i> Разрешения
+                </a>
+                <div id="navPermission" class="collapse " data-bs-parent="#sideNavbar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item position-relative">
+                            <a class="nav-link " href="{{route('admin.permission')}}">Разрешения</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Роли</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Роли и пользователи</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
 
 
             <li class="nav-item">

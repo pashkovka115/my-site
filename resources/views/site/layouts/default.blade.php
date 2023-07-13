@@ -30,12 +30,12 @@
     <div class="container">
         <div class="row align-items-center justify-content-between position-relative">
             <div class="col">
-                <div class="header-logo-area">
+                <h1 class="header-logo-area">
                     <a href="{{ route('site.home') }}">
-                        <img class="logo-main" src=" <?= asset('assets/site') ?>/img/logo.png" alt="Логотип: Мастерские Смирнова"/>
-                        <img class="logo d-none" src=" <?= asset('assets/site') ?>/img/logo-light.png" alt="Логотип: Мастерские Смирнова"/>
+                        <img class="logo-main" src=" <?= asset('assets/site') ?>/img/logo.png" alt="Мастерские Смирнова"/>
+                        <img class="logo d-none" src=" <?= asset('assets/site') ?>/img/logo-light.png" alt="Мастерские Смирнова"/>
                     </a>
-                </div>
+                </h1>
             </div>
             {{--				@include('site.parts.top_menu')--}}
             {{--                <x-menu></x-menu>--}}

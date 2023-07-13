@@ -36,5 +36,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductAttrOptionSeeder::class);
         $this->call(ProductAttrPropertiesSeeder::class);
         $this->call(ProductAttrOptionValueSeeder::class);
+
+        $this->call(PermissionSeeder::class);
     }
 }

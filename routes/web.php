@@ -81,9 +81,9 @@ Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function ()
         base_path('routes/admin/menu.php'),
     );
 
-    /*Route::prefix('ajax')->group(
-        base_path('routes/admin/ajax.php'),
-    );*/
+    Route::prefix('permission')->group(
+        base_path('routes/admin/permission.php'),
+    );
 });
 // ============================= END ADMIN =========================================================================
 
