@@ -87,7 +87,7 @@
                             <a class="nav-link " href="{{route('admin.permission')}}">Разрешения</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Роли</a>
+                            <a class="nav-link " href="{{ route('admin.role') }}">Роли</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">Роли и пользователи</a>

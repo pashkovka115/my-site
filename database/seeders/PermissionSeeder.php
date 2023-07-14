@@ -21,8 +21,8 @@ class PermissionSeeder extends Seeder
         foreach ($methods as $method){
             $num++;
             Permission::create([
-                'name' => $method,
-                'description' => "Описание метода $num",
+                'name' => $method['action'],
+                'description' => $method['doc'] ? $method['doc'] : "Описание метода $num",
                 'guard_name' => 'web',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

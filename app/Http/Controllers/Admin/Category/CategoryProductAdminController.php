@@ -13,7 +13,10 @@ class CategoryProductAdminController extends AdminController
 {
     const IMAGE_PATH = 'category_product';
 
-
+    /**
+     * Список категорий товаров
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function index()
     {
         return view('admin.category.index', [
@@ -23,7 +26,10 @@ class CategoryProductAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Форма добавления новой категории товаров
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function create()
     {
         return view('admin.category.create', [
@@ -33,7 +39,11 @@ class CategoryProductAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Сохранение новой категории товаров
+     * @param StoreCategoryProductRequest $request
+     * @return void
+     */
     public function store(StoreCategoryProductRequest $request)
     {
         $category = CategoryProduct::create($this->base_fields($request, self::IMAGE_PATH));
@@ -41,7 +51,11 @@ class CategoryProductAdminController extends AdminController
         $this->redirectAdmin($request, 'category_product', $category->id);
     }
 
-
+    /**
+     * Форма редактирования категории товаров
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit($id)
     {
         return view('admin.category.edit', [
@@ -56,7 +70,12 @@ class CategoryProductAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Обновление категории товаров
+     * @param UpdateCategoryProductsRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update(UpdateCategoryProductsRequest $request, $id)
     {
         /*
@@ -65,44 +84,22 @@ class CategoryProductAdminController extends AdminController
         $this->updateSort($request, CategoryProductColumns::class);
 
         /*
-         * Работа со свойствами
-         */
-//        $this->updateAdditionalFields($request, 'category_id', $id, CategoryProductAdditionalFields::class);
-
-        /*
          * Работа с категорией
          */
         $category = CategoryProduct::where('id', $id)->firstOrFail();
 
         $data = $this->base_fields($request, self::IMAGE_PATH);
 
-        /*if (is_null($data['img_announce'])) {
-            unset($data['img_announce']);
-        }
-        if (is_null($data['img_detail'])) {
-            unset($data['img_detail']);
-        }
-
-        if ($request->has('delete_img_announce')) {
-            if (file_exists('storage/' . $category->img_announce)) {
-                unlink('storage/' . $category->img_announce);
-            }
-            $data['img_announce'] = '';
-        }
-
-        if ($request->has('delete_img_detail')) {
-            if (file_exists('storage/' . $category->img_detail)) {
-                unlink('storage/' . $category->img_detail);
-            }
-            $data['img_detail'] = '';
-        }*/
-
         $category->update($data);
 
         return $this->redirectAdmin($request, 'category_product', $id);
     }
 
-
+    /**
+     * Удаление категории товаров
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         CategoryProduct::destroy($id);

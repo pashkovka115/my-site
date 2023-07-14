@@ -26,13 +26,26 @@ class ReaderControllers
                 if (str_starts_with($method->class, str_replace('/', '\\', ucfirst($this->scanPath)))
                     and !str_starts_with($method->name, '__')
                 ){
-                    $methods[] = $method->class . '::' . $method->name;
+                    $comment = (new \ReflectionClass($method->class))->getMethod($method->name)->getDocComment();
+                    if ($comment){
+                        $comment = ltrim($comment, '/**');
+                        $comment = rtrim($comment, '*/');
+                        $arr_str = explode('*', $comment);
+                        if (isset($arr_str[1])){
+                            $comment = trim($arr_str[1]);
+                        }else{
+                            $comment = false;
+                        }
+                    }
+                    $methods[] = [
+                        'action' => $method->class . '::' . $method->name,
+                        'doc' => $comment
+                        ];
                 }
             }
-//            $methods[] = '-----------------------';
         }
 
-        return array_unique($methods);
+        return $methods;
     }
 
 
@@ -40,13 +53,16 @@ class ReaderControllers
     {
         $classes = [];
         foreach ($files as $file) {
-            require $file;
+            require_once $file;
         }
 
         $declared_classes = get_declared_classes();
         foreach ($declared_classes as $class) {
             $ref_class = new \ReflectionClass($class);
-            if ($ref_class->isSubclassOf(Controller::class)) {
+            if ($ref_class->isSubclassOf(Controller::class)
+                and !$ref_class->isAbstract()
+                and !$ref_class->isInterface()
+            ) {
                 $classes[] = $ref_class;
             }
         }

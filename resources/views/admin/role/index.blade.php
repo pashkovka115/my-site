@@ -1,10 +1,10 @@
 @extends('admin.layouts.default')
 
 @section('title')
-	Разрешения
+	Роли
 @endsection
 @section('page_header')
-	Разрешения
+	Роли
 @endsection
 
 @section('style_top') @endsection
@@ -16,10 +16,9 @@
 		<!-- Modal -->
 		{{--		@include('admin.parts.modal_settings_columns', ['route' => 'admin.category_product.columns.update'])--}}
 		<!-- End Modal -->
-		<a href="{{ route('admin.permission.sync') }}"
+		<a href="{{ route('admin.role.create') }}"
 			 class="btn btn-outline-success mb-2"
-			 onclick="return confirm('Потребуется редактирование ролей пользователей.')"
-		>Сканировать систему и синхронизировать разрешения</a>
+		>Добавить роль</a>
 	</div>
 	<div class="py-2">
 		<!-- row -->
@@ -32,8 +31,7 @@
 							<thead>
 							<tr>
 								<th>ID</th>
-								<th>Разрешение</th>
-								<th>Описание</th>
+								<th>Роль</th>
 								<th>#</th>
 							</tr>
 							</thead>
@@ -41,10 +39,9 @@
 							@foreach($items as $item)
 								<tr>
 									<td>{{ $item->id }}</td>
-									<td title="{{ $item->name }}">{{ basename($item->name) }}</td>
-									<td>{{ $item->description }}</td>
+									<td>{{ $item->name }}</td>
 									<td>
-										<a href="{{ route('admin.permission.edit', ['id' => $item->id]) }}"
+										<a href="{{ route('admin.role.edit', ['id' => $item->id]) }}"
 											 class="btn btn-info mb-2"><i class="bi bi-pencil-square"></i></a>
 									</td>
 								</tr>

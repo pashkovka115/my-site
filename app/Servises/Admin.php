@@ -22,7 +22,7 @@ enum Admin
      * Наименование роли пользователя
      * с наивысшими привелегиями
      */
-    public static function superUser()
+    public static function superUserName()
     {
         return self::super_user->name;
     }

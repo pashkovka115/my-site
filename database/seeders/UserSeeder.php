@@ -27,11 +27,11 @@ class UserSeeder extends Seeder
         $user->save();
 
         Role::create([
-            'name' => Admin::superUser(),
+            'name' => Admin::superUserName(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
 
-        $admin->assignRole(Admin::superUser());
+        $admin->assignRole(Admin::superUserName());
     }
 }
