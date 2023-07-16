@@ -43,6 +43,10 @@
 									<td>
 										<a href="{{ route('admin.role.edit', ['id' => $item->id]) }}"
 											 class="btn btn-info mb-2"><i class="bi bi-pencil-square"></i></a>
+										<a href="{{ route('admin.role.destroy', ['id' => $item->id]) }}"
+											 class="btn btn-danger mb-2"
+											 onclick="return window.confirm('Удалить роль?')"><i
+													class="bi bi-trash"></i></a>
 									</td>
 								</tr>
 							@endforeach

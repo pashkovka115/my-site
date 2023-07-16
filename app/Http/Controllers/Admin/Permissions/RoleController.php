@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Permissions;
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
+use App\Models\Permissions\Permission;
 use App\Models\Permissions\Role;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class RoleController extends AdminController
 {
     /**
      * Список ролей
@@ -23,7 +25,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.role.create', [
+            'permissions' => Permission::all(['id', 'name', 'description'])
+        ]);
     }
 
     /**
@@ -31,7 +35,19 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string', 'unique:' . config('permission.table_names.roles')],
+            'guard_name' => ['required', 'string'],
+            'perms' => ['nullable', 'array'],
+            'perms.*' => ['nullable', 'string'],
+        ]);
+
+        $role = \Spatie\Permission\Models\Role::create(['name' => $data['name']]);
+        if (isset($data['perms'])){
+            $role->syncPermissions($data['perms']);
+        }
+
+        return $this->redirectAdmin($request, 'role', $role->id);
     }
 
     /**
@@ -39,7 +55,12 @@ class RoleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $role = \Spatie\Permission\Models\Role::where('id', $id)->firstOrFail();
+
+        return view('admin.role.edit', [
+            'permissions' => Permission::all(['id', 'name', 'description']),
+            'role' => $role,
+        ]);
     }
 
     /**
@@ -47,7 +68,20 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'string',], // todo:  'unique:' . config('permission.table_names.roles') кроме себя
+            'perms' => ['nullable', 'array'],
+            'perms.*' => ['nullable', 'string'],
+        ]);
+
+        $role = \Spatie\Permission\Models\Role::findById($id);
+        $role->update(['name' => $data['name']]);
+
+        if (isset($data['perms'])){
+            $role->syncPermissions($data['perms']);
+        }
+
+        return $this->redirectAdmin($request, 'role', $role->id);
     }
 
     /**
@@ -55,6 +89,8 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        \Spatie\Permission\Models\Role::where('id', $id)->delete();
+
+        return back();
     }
 }

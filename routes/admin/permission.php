@@ -8,5 +8,7 @@ Route::get('sync', [\App\Http\Controllers\Admin\Permissions\MapPermissionControl
 Route::get('edit/{id}', [\App\Http\Controllers\Admin\Permissions\MapPermissionController::class, 'edit'])->name('admin.permission.edit');
 Route::post('update/{id}', [\App\Http\Controllers\Admin\Permissions\MapPermissionController::class, 'update'])->name('admin.permission.update');
 
-//Route::post('store', [\App\Http\Controllers\Admin\Ajax\AjaxController::class, 'saveOrderBlocks'])->name('admin.ajax.save_order_blocks.store');
+Route::get('create', [\App\Http\Controllers\Admin\Permissions\MapPermissionController::class, 'create'])->name('admin.permission.create');
+Route::post('store', [\App\Http\Controllers\Admin\Permissions\MapPermissionController::class, 'store'])->name('admin.permission.store');
+Route::get('destroy/{id}', [\App\Http\Controllers\Admin\Permissions\MapPermissionController::class, 'destroy'])->name('admin.permission.destroy');
 

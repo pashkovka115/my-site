@@ -20,6 +20,9 @@
 			 class="btn btn-outline-success mb-2"
 			 onclick="return confirm('Потребуется редактирование ролей пользователей.')"
 		>Сканировать систему и синхронизировать разрешения</a>
+		<a href="{{ route('admin.permission.create') }}"
+			 class="btn btn-outline-success mb-2"
+		>Добавить разрешение</a>
 	</div>
 	<div class="py-2">
 		<!-- row -->
@@ -46,6 +49,10 @@
 									<td>
 										<a href="{{ route('admin.permission.edit', ['id' => $item->id]) }}"
 											 class="btn btn-info mb-2"><i class="bi bi-pencil-square"></i></a>
+										<a href="{{ route('admin.permission.destroy', ['id' => $item->id]) }}"
+											 class="btn btn-danger mb-2"
+											 onclick="return window.confirm('Удалить разрешение?')"><i
+													class="bi bi-trash"></i></a>
 									</td>
 								</tr>
 							@endforeach

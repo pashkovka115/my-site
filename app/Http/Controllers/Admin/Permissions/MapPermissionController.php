@@ -22,6 +22,28 @@ class MapPermissionController extends AdminController
     }
 
     /**
+     * Форма добавления разрешения
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    public function create()
+    {
+        return view('admin.permission.create');
+    }
+
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
+        ]);
+
+        $perm = \Spatie\Permission\Models\Permission::create($data);
+
+        return $this->redirectAdmin($request, 'permission', $perm->id);
+    }
+
+    /**
      * Форма редактирования разрешения
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
@@ -47,6 +69,14 @@ class MapPermissionController extends AdminController
         Permission::where('id', $id)->update($data);
 
         return $this->redirectAdmin($request, 'permission', $id);
+    }
+
+
+    public function destroy(string $id)
+    {
+        \Spatie\Permission\Models\Permission::where('id', $id)->delete();
+
+        return back();
     }
 
     /**
