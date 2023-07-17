@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class FeedbackColumnAdminController extends AdminController
 {
+    /**
+     * Обновление шаблона колонок сообщений
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(Request $request)
     {
         $request->request->remove('_token');

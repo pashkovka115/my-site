@@ -28,14 +28,6 @@ class UserSeeder extends Seeder
         $user_writer->password = bcrypt('user');
         $user_writer->save();
 
-        /*Role::create([
-            'name' => Admin::superUserName(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-        $admin->assignRole(Admin::superUserName());*/
-
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $role_super_admin = Role::create(['name' => Admin::superUserName()]);
@@ -49,9 +41,6 @@ class UserSeeder extends Seeder
             $perm = \Spatie\Permission\Models\Permission::create([
                 'name' => $method['action'],
                 'description' => $method['doc'] ? $method['doc'] : "$num",
-//                'guard_name' => 'web',
-//                'created_at' => Carbon::now(),
-//                'updated_at' => Carbon::now(),
             ]);
 
             if (str_starts_with($method['doc'], 'Форма') || str_starts_with($method['doc'], 'Сохранение')){

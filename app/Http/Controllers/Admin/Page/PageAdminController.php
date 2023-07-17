@@ -6,16 +6,17 @@ use App\Http\Controllers\AdminController;
 use App\Http\Requests\StorePagesRequest;
 use App\Http\Requests\UpdatePagesRequest;
 use App\Models\Page\Page;
-use App\Models\Page\PageAdditionalFields;
 use App\Models\Page\PageColumns;
-use App\Models\Page\PageImages;
 use App\Models\Page\PageTabs;
 
 class PageAdminController extends AdminController
 {
     const IMAGE_PATH = 'page';
 
-
+    /**
+     * Список страниц
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function index()
     {
         return view('admin.page.index', [
@@ -24,7 +25,10 @@ class PageAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Форма создания страницы
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function create()
     {
         return view('admin.page.create', [
@@ -33,7 +37,11 @@ class PageAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Сохранение новой страницы
+     * @param StorePagesRequest $request
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function store(StorePagesRequest $request)
     {
         $page = Page::create($this->base_fields($request, self::IMAGE_PATH));
@@ -41,7 +49,11 @@ class PageAdminController extends AdminController
         return $this->redirectAdmin($request, 'page', $page->id);
     }
 
-
+    /**
+     * Форма редактирования страницы
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit($id)
     {
         $item = Page::where('id', $id)->firstOrFail();
@@ -53,7 +65,12 @@ class PageAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Обновление страницы
+     * @param UpdatePagesRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update(UpdatePagesRequest $request, $id)
     {
         /*
@@ -75,7 +92,11 @@ class PageAdminController extends AdminController
         return $this->redirectAdmin($request, 'page', $id);
     }
 
-
+    /**
+     * Удаление страницы
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         Page::destroy($id);

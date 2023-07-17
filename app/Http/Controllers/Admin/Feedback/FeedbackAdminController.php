@@ -13,7 +13,10 @@ class FeedbackAdminController extends AdminController
 {
     const IMAGE_PATH = 'feedback';
 
-
+    /**
+     * Список сообщений обратной связи
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function index()
     {
         return view('admin.feedback.index', [
@@ -22,24 +25,35 @@ class FeedbackAdminController extends AdminController
         ]);
     }
 
-
-    public function create()
+    /**
+     * Форма создания сообщения обратной связи
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
+    /*public function create()
     {
         return view('admin.feedback.create', [
             'columns' => FeedbackColumns::column_meta_sort_single(),
             'existing_fields' => $this->getFieldsModel(Feedback::class),
         ]);
-    }
+    }*/
 
-
-    public function store(StoreFeedbackRequest $request)
+    /**
+     * Сохранение нового сообщения
+     * @param StoreFeedbackRequest $request
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
+    /*public function store(StoreFeedbackRequest $request)
     {
         $feedback = Feedback::create($this->base_fields($request, self::IMAGE_PATH));
 
         return $this->redirectAdmin($request, 'feedback', $feedback->id);
-    }
+    }*/
 
-// Feedback::where('is_admin_viewed', 0)->count()
+    /**
+     * Форма редактирования сообщения обратной связи
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit($id)
     {
         \DB::table('feedback')->where('id', $id)->increment('is_admin_viewed');
@@ -52,7 +66,12 @@ class FeedbackAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Обновление сообщения обратной связи
+     * @param UpdateFeedbackRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update(UpdateFeedbackRequest $request, $id)
     {
         /*
@@ -96,7 +115,11 @@ class FeedbackAdminController extends AdminController
         return $this->redirectAdmin($request, 'feedback', $id);
     }
 
-
+    /**
+     * Удаление сообщения обратной связи
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         Feedback::destroy($id);

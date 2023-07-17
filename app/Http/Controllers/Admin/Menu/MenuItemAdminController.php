@@ -12,14 +12,10 @@ use Illuminate\Support\Facades\Route;
 class MenuItemAdminController extends AdminController
 {
     /**
-     * Display a listing of the resource.
+     * Сохранение нового пункта меню
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function index()
-    {
-        //
-    }
-
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -34,7 +30,11 @@ class MenuItemAdminController extends AdminController
         return back();
     }
 
-
+    /**
+     * Форма редактирования пункта меню
+     * @param string $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit(string $id)
     {
         $links = ['register', 'login', 'logout'];
@@ -64,7 +64,11 @@ class MenuItemAdminController extends AdminController
         return view('admin.menu_item.edit', compact('items', 'menu', 'links'));
     }
 
-
+    /**
+     * Обновление пункта меню
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $data = $request->validate([
@@ -86,7 +90,11 @@ class MenuItemAdminController extends AdminController
         return back();
     }
 
-
+    /**
+     * Удаление пункта меню
+     * @param string $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(string $id)
     {
         MenuItem::where('id', $id)->delete();

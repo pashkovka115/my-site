@@ -6,7 +6,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\CategoryProduct\CategoryProduct;
-use App\Models\Language;
 use App\Models\Product\Attributes\Option;
 use App\Models\Product\Attributes\Property;
 use App\Models\Product\Attributes\Value;
@@ -14,33 +13,19 @@ use App\Models\Product\Product;
 use App\Models\Product\ProductAdditionalFields;
 use App\Models\Product\ProductColumns;
 use App\Models\Product\ProductImages;
-use App\Models\Product\ProductsDescription;
 use App\Models\Product\ProductTabs;
-use Illuminate\Http\Request;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Eloquent\Builder;
-use Route;
-use Illuminate\Support\Facades\View;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductAdminController extends AdminController
 {
     const IMAGE_PATH = 'products';
 
-
+    /**
+     * Список товаров
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function index()
     {
-//        $lang = Language::where('base', true)->first();
-//        $query->where('products_description.language_id', $lang->id);
-
-        /*$products = Product::with(['langs' => function(HasMany $query){
-            $lang = Language::where('base', true)->first();
-            $query->where('language_id', $lang->id);
-        }])->paginate();*/
-
         $products = Product::paginate();
-
-//        dump($products);
 
         return view('admin.product.index', [
             'tabs' => ProductTabs::with('columns')->orderBy('sort')->get()->toArray(),
@@ -49,7 +34,10 @@ class ProductAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Форма добавления товара
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function create()
     {
         return view('admin.product.create', [
@@ -64,7 +52,11 @@ class ProductAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Сохранение товара
+     * @param StoreProductRequest $request
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function store(StoreProductRequest $request)
     {
         $data = $this->base_fields($request, self::IMAGE_PATH);
@@ -74,7 +66,11 @@ class ProductAdminController extends AdminController
         return $this->redirectAdmin($request, 'product', $product->id);
     }
 
-
+    /**
+     * Форма редактирования товара
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit($id)
     {
         $product = Product::with([
@@ -107,7 +103,12 @@ class ProductAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Обновление товара
+     * @param UpdateProductRequest $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update(UpdateProductRequest $request, $id)
 //    public function update(Request $request, $id)
     {
@@ -174,7 +175,11 @@ class ProductAdminController extends AdminController
         return $this->redirectAdmin($request, 'product', $id);
     }
 
-
+    /**
+     * Удаление товара
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         Product::destroy($id);

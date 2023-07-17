@@ -90,7 +90,7 @@
                             <a class="nav-link " href="{{ route('admin.role') }}">Роли</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Роли и пользователи</a>
+                            <a class="nav-link " href="{{ route('admin.user_and_role') }}">Роли и пользователи</a>
                         </li>
                     </ul>
                 </div>

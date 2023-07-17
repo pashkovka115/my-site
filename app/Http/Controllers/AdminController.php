@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product\ProductColumns;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 
@@ -15,7 +18,17 @@ class AdminController extends Controller
 
     public function __construct()
     {
-//        View::share('global_columns', ProductColumns::column_meta_sort_single());
+        // todo: Роли
+        $current_action = \Route::getCurrentRoute()->getActionName();
+        $user = User::where('id', auth()->id())->first();
+
+
+//        dd($current_action, $user, Auth::user());
+//        dd($user->hasPermissionTo($current_action));
+
+        /*if (!$user->hasPermissionTo($current_action)){
+            return back()->withErrors('Не достаточно прав доступа');
+        }*/
     }
 
     /**

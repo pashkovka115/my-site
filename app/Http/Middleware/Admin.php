@@ -16,13 +16,16 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check()){
+        if(!auth()->user()->hasPermissionTo(\Route::getCurrentRoute()->getActionName())){
+            return back()->withErrors('Не достаточно прав доступа');
+        }
+        /*if (!auth()->check()){
             return redirect('/');
         }
         $user = User::find(auth()->id());
         if (!$user->is_admin){
             return redirect('/');
-        }
+        }*/
 
         return $next($request);
     }

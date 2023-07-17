@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class CategoryProductTabAdminController extends AdminController
 {
+    /**
+     * Сохранение шаблона вкладок категорий товаров
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -29,7 +32,11 @@ class CategoryProductTabAdminController extends AdminController
         return back();
     }
 
-
+    /**
+     * Обновление шаблона вкладок категорий товаров
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $tabs = $request->toArray();

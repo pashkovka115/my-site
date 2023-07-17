@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProductTabAdminController extends AdminController
 {
+    /**
+     * Сохранение шаблона отображения вкладок товара
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -29,7 +34,11 @@ class ProductTabAdminController extends AdminController
         return back();
     }
 
-
+    /**
+     * Обновление шаблона отображения вкладок товара
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $tabs = $request->toArray();

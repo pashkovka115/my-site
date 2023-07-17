@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class FeedbackTabAdminController extends AdminController
 {
+    /**
+     * Сохранение шаблона вкладок сообщений
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -30,7 +35,11 @@ class FeedbackTabAdminController extends AdminController
         return back();
     }
 
-
+    /**
+     * Обновление шаблона вкладок сообщений
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request)
     {
         $tabs = $request->toArray();

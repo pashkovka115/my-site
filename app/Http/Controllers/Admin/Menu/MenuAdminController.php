@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class MenuAdminController extends AdminController
 {
+    /**
+     * Список меню
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function index()
     {
         $menus = json_decode(Menu::all());
@@ -16,7 +20,11 @@ class MenuAdminController extends AdminController
         return view('admin.menu.index', ['menus' => $menus]);
     }
 
-
+    /**
+     * Сохранение нового меню
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -28,7 +36,11 @@ class MenuAdminController extends AdminController
         return back();
     }
 
-
+    /**
+     * Форма редактирования меню
+     * @param string $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit(string $id)
     {
         $menu = Menu::where('id', $id)->firstOrFail();
@@ -36,7 +48,12 @@ class MenuAdminController extends AdminController
         return view('admin.menu.edit', compact('menu'));
     }
 
-
+    /**
+     * Обновление меню
+     * @param Request $request
+     * @param string $id
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
@@ -57,7 +74,11 @@ class MenuAdminController extends AdminController
         }*/
     }
 
-
+    /**
+     * Удаление меню
+     * @param string $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(string $id)
     {
         MenuItem::where('menu_id', $id)->delete();

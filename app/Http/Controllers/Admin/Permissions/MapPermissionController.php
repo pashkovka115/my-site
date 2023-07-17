@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Permissions;
 
 use App\Http\Controllers\AdminController;
 use App\Models\Permissions\Permission;
+use App\Models\Permissions\Role;
+use App\Models\User;
+use App\Servises\Admin;
 use App\Servises\ReaderControllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,7 +33,11 @@ class MapPermissionController extends AdminController
         return view('admin.permission.create');
     }
 
-
+    /**
+     * Добавление нового разрешения
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -72,6 +79,11 @@ class MapPermissionController extends AdminController
     }
 
 
+    /**
+     * Удаление разрешения
+     * @param string $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(string $id)
     {
         \Spatie\Permission\Models\Permission::where('id', $id)->delete();
@@ -101,6 +113,9 @@ class MapPermissionController extends AdminController
                 'updated_at' => Carbon::now(),
             ]);
         }
+
+        $role = \Spatie\Permission\Models\Role::findByName(Admin::superUserName());
+        $role->syncPermissions(\Spatie\Permission\Models\Permission::all());
 
         return back();
     }

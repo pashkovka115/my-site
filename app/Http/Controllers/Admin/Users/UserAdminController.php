@@ -11,7 +11,10 @@ class UserAdminController extends AdminController
 {
     const IMAGE_PATH = 'users';
 
-
+    /**
+     * Список пользователей
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function index()
     {
         return view('admin.user.index', [
@@ -19,13 +22,20 @@ class UserAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Форма добавления полбзователя
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function create()
     {
         return view('admin.user.create');
     }
 
-
+    /**
+     * Сохранение пользователя
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -50,7 +60,11 @@ class UserAdminController extends AdminController
         }
     }
 
-
+    /**
+     * Редактирование пользователя
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     */
     public function edit($id)
     {
         return view('admin.user.edit', [
@@ -58,7 +72,12 @@ class UserAdminController extends AdminController
         ]);
     }
 
-
+    /**
+     * Обновление пользователя
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|null
+     */
     public function update(Request $request, $id)
     {
         $data = $request->validate([
@@ -118,7 +137,11 @@ class UserAdminController extends AdminController
         return $this->redirectAdmin($request, 'user', $id);
     }
 
-
+    /**
+     * Удаление пользователя
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         User::destroy($id);

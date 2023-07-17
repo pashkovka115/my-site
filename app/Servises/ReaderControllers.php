@@ -38,7 +38,7 @@ class ReaderControllers
                         }
                     }
                     $methods[] = [
-                        'action' => $method->class . '::' . $method->name,
+                        'action' => $method->class . '@' . $method->name,
                         'doc' => $comment
                         ];
                 }

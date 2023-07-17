@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class PageColumnAdminController extends AdminController
 {
+    /**
+     * Обновление шаблона отображения колонок страниц
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(Request $request)
     {
         $request->request->remove('_token');

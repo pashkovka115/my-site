@@ -88,6 +88,10 @@ Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function ()
     Route::prefix('role')->group(
         base_path('routes/admin/role.php'),
     );
+
+    Route::prefix('user-and-role')->group(
+        base_path('routes/admin/user_and_role.php'),
+    );
 });
 // ============================= END ADMIN =========================================================================
 

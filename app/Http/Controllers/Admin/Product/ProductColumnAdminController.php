@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductColumnAdminController extends AdminController
 {
+    /**
+     * Обновление шаблона отображения колонок товара
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(Request $request)
     {
         $request->request->remove('_token');

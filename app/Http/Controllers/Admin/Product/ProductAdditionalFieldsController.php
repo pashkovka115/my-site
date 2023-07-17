@@ -12,7 +12,11 @@ class ProductAdditionalFieldsController extends AdminAdditionalFieldsController
     const MODEL = ProductAdditionalFields::class;
     const TABLE = 'product_additional_fields';
 
-
+    /**
+     * Сохранение дополнительных полей
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request){
         return parent::store($request);
     }

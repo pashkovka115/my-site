@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class SitemapController extends Controller
 {
+    /**
+     * Список Sitemap
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $index = Product::where('is_show', true)->orderByDesc('updated_at')->firstOrFail();
@@ -17,7 +21,10 @@ class SitemapController extends Controller
         ])->header('Content-Type', 'text/xml');
     }
 
-
+    /**
+     * Товары Sitemap
+     * @return \Illuminate\Http\Response
+     */
     public function products()
     {
         $products = Product::all(['updated_at', 'slug']);
