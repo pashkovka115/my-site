@@ -31,6 +31,7 @@
         <div class="row align-items-center justify-content-between position-relative">
             <div class="col">
                 <h1 class="header-logo-area">
+                    <span style="display: none">Мастерские Смирнова</span>
                     <a href="{{ route('site.home') }}">
                         <img class="logo-main" src=" <?= asset('assets/site') ?>/img/logo.png" alt="Мастерские Смирнова"/>
                         <img class="logo d-none" src=" <?= asset('assets/site') ?>/img/logo-light.png" alt="Мастерские Смирнова"/>
@@ -74,6 +75,7 @@
                                         @auth
                                         <li><a href="{{ route('logout') }}">Выйти</a></li>
                                         @endauth
+                                        <li><a href="{{ route('site.cabinet.show') }}">Личный кабинет</a></li>
                                     </ul>
                                 </li>
                             </ul>

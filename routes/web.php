@@ -52,6 +52,18 @@ Route::prefix('storage')->group(function (){
         ->name('storage.thumbnail');
 });
 
+// Сохранение сообщений со страницы контактов
+Route::post('feedback/store', [\App\Http\Controllers\Site\FeedbackController::class, 'store'])->name('site.feedback.store');
+
+
+Route::prefix('contacts')->group(function () {
+    Route::get('', [\App\Http\Controllers\Site\Contact\ContactController::class, 'show'])->name('site.contact');
+});
+
+Route::middleware(['auth'])->prefix('cabinet')->group(function () {
+    Route::get('', [\App\Http\Controllers\Site\Cabinet\CabinetController::class, 'show'])->name('site.cabinet.show');
+});
+
 
 // ============================= ADMIN =========================================================================
 Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function () {
@@ -94,14 +106,6 @@ Route::middleware(['auth', 'admin'])->prefix(Admin::prefix())->group(function ()
     );
 });
 // ============================= END ADMIN =========================================================================
-
-// Сохранение сообщений со страницы контактов
-Route::post('feedback/store', [\App\Http\Controllers\Site\FeedbackController::class, 'store'])->name('site.feedback.store');
-
-
-Route::prefix('contacts')->group(function () {
-    Route::get('', [\App\Http\Controllers\Site\Contact\ContactController::class, 'show'])->name('site.contact');
-});
 
 // Sitemaps
 Route::prefix('sitemap')->group(function (){

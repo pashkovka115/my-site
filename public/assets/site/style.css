@@ -84,3 +84,7 @@
 .header-action-area .header-action .language-menu:hover .title {
     color: #ff383f;
 }
+
+.header-action-area .header-action .user-menu .user-dropdown.show{
+    height: 90px;
+}
