@@ -40,6 +40,7 @@ Route::prefix('cart')->group(function (){
 });
 
 Route::prefix('order')->group(function (){
+    Route::get('', [\App\Http\Controllers\Site\Order\OrderController::class, 'show'])->name('site.order');
     Route::post('store', [\App\Http\Controllers\Site\Order\OrderController::class, 'store'])->name('site.order.store');
 });
 

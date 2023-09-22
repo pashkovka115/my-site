@@ -24,7 +24,7 @@
           <form action="{{ route('site.order.store') }}" method="post">
             @csrf
           <div class="edit-checkout-information">
-            <h4 class="title">Покупатель</h4>
+            <h4 class="title">Покупатель </h4>
             @guest
               <div class="edit-checkout-form">
                 <div class="row row-gutter-12">
